@@ -1,5 +1,5 @@
 
-import type { ICanHazDadJokeApiInterface } from './ICanHazDadJokeApi.d';
+import type ICanHazDadJokeApiInterface from './ICanHazDadJokeApi.d';
 import type { ResponseData } from '../../FetchDataProvider.d';
 import type { jsonConfigurationType } from '../../jsonConfiguration.d';
 import jsonConfiguration from './ICanHazDadJokeApi.config.json';
@@ -14,8 +14,11 @@ class ICanHazDadJokeApi extends FetchDataProvider implements ICanHazDadJokeApiIn
         this.data = jsonConfiguration;
     }
 
-    async getRandomJoke() {
-        return this.fetch<ResponseData>(jsonConfiguration.endpoint, jsonConfiguration.headers)
+    async getRandomData() {
+        const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint, jsonConfiguration.headers)
+
+        return super.normalizeData(jokeData.joke);
+
     }
 
     fetch<ResponseData> (endpoint: string, headers: ApiHeader) {

@@ -1,10 +1,8 @@
-import type { ResponseData } from "../../FetchDataProvider";
+import type { NormalizedData } from "../../FetchDataProvider.d";
 
-interface ChuckNorrisJokesApi {
+interface ChuckNorrisJokesApiInterface {
     data: jsonConfigurationInterface
-    async getRandomJoke(): Promise<ResponseData>
+    getRandomData(): Promise<NormalizedData>
 }
 
-export default ChuckNorrisJokesApi;
-
-export { ICanHazDadJokeApiInterface, ResponseData };
+export default ChuckNorrisJokesApiInterface;

@@ -1,8 +1,8 @@
 import FetchDataProvider from '../../FetchDataProvider';
-import type { ApiHeader, jsonConfigurationType } from '../../jsonConfiguration';
+import type { jsonConfigurationType } from '../../jsonConfiguration';
 import type ChuckNorrisJokesApiInterface from './ChuckNorrisJokesApi.d';
 import jsonConfiguration from './ChuckNorrisJokesApi.config.json';
-import type { ResponseData } from './ChuckNorrisJokesApi.d';
+import type { ResponseData } from '../../FetchDataProvider.d';
 
 class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesApiInterface {
     data: jsonConfigurationType;
@@ -12,12 +12,14 @@ class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesA
         this.data = jsonConfiguration;
     }
 
-    async getRandomJoke() {
-        return this.fetch<ResponseData>(jsonConfiguration.endpoint, jsonConfiguration.headers)
+    async getRandomData() {
+        const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint);
+
+        return super.normalizeData(jokeData.value);
     }
 
-    fetch<ResponseData> (endpoint: string, headers: ApiHeader) {
-        return super.fetch<ResponseData>(endpoint, headers);
+    fetch<ResponseData> (endpoint: string) {
+        return super.fetch<ResponseData>(endpoint);
     }
 }
 

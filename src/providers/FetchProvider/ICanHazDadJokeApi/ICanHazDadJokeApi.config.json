@@ -1,5 +1,4 @@
 {
     "endpoint": "https://icanhazdadjoke.com/",
-    "headers": { "accept": "application/json" },
-    "params": { }
+    "headers": { "Accept": "application/json" }
 }

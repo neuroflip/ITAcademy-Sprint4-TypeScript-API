@@ -1,8 +1,8 @@
 import type FetchDataProvider from '../providers/FetchDataProvider';
-import type { ResponseData } from '../providers/FetchDataProvider.d';
+import type { NormalizedData } from '../providers/FetchDataProvider.d';
 
-interface ApiManagerInterface<T extends FetchDataProvider> {
-    getRandomJoke(): Promise<ResponseData>;
+interface ApiManagerInterface<T> {
+    getRandomJoke(): Promise<NormalizedData>;
 }
 
 export default ApiManagerInterface;

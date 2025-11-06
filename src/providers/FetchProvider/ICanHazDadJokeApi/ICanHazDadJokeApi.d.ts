@@ -1,8 +1,8 @@
-import type { ResponseData } from "../../FetchDataProvider";
+import type { NormalizedData } from "../../FetchDataProvider.d";
 
 interface ICanHazDadJokeApiInterface {
-    data: jsonConfigurationInterface
-    async getRandomJoke(): Promise<ResponseData>
+    data: jsonConfigurationInterface,
+    async getRandomData(): Promise<NormalizedData>
 }
 
-export { ICanHazDadJokeApiInterface, ResponseData };
+export default ICanHazDadJokeApiInterface;

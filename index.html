@@ -4,9 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>itacademy-sprint4-typescript-api</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script defer type="module" src="/src/main.ts"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div class="weatherContainer"></div>
+    <main class="jokesContainer">
+      <h1>Ready to laugh?</h1>
+      <p class="joke"></p>
+      <div class="punctuationContainer">
+        <button id="plus1button" class="button">+1</button>
+        <button id="plus2button" class="button">+2</button>
+        <button id="plus3button" class="button">+3</button>
+      </div>
+      <button id="jokesButton" class="button primary">Next Joke</button>
+    </main>
+
+    
   </body>
 </html>
