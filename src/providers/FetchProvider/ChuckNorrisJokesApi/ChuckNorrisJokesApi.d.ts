@@ -1,8 +1,13 @@
-import type { NormalizedData } from "../../FetchDataProvider.d";
-
 interface ChuckNorrisJokesApiInterface {
     data: jsonConfigurationInterface
-    getRandomData(): Promise<NormalizedData>
+    getData(): Promise<ResponseData>
 }
 
-export default ChuckNorrisJokesApiInterface;
+type NormalizedData = {
+    joke: string,
+    score: number,
+    date: Date
+}
+
+export {ChuckNorrisJokesApiInterface, NormalizedData };
+

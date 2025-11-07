@@ -1,18 +1,13 @@
-import type { ApiHeader } from "./jsonConfiguration";
+import type { ApiHeader, QueryParams } from "./fetchConfiguration";
 
 interface FetchDataProviderInterface {
-    normalizeData(id:string, value: string): NormalizedData,
-    fetch<T>(url: string, headers: array<ApiHeader>): Promise<ResponseData>
+    fetch<T>(url: string, headers: ApiHeader, params?:QueryParams): Promise<ResponseData>
 }
 
 type ResponseData = {
-    [key: string]: string
+    [key: string]: string | number | ResponseData
 }
 
-type NormalizedData = {
-    joke: string,
-    score: number,
-    date: Date
-}
 
-export { FetchDataProviderInterface, ResponseData, NormalizedData };
+
+export { FetchDataProviderInterface, ResponseData };

@@ -2,7 +2,7 @@ import type ApiManagerInterface from "../ApiManager/ApiManager.d";
 import ApiManager from "../ApiManager/ApiManager";
 import ChuckNorrisJokesApi from "../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi";
 import ICanHazDadJokeApi from "../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi";
-import type { NormalizedData } from "../providers/FetchDataProvider.d";
+import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi.d";
 import JokesTracker from "../JokesTracker/JokesTracker";
 
 class JokesManager {

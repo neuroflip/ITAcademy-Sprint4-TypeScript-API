@@ -1,6 +1,6 @@
 import FetchDataProvider from '../../FetchDataProvider';
-import type { jsonConfigurationType } from '../../jsonConfiguration';
-import type ChuckNorrisJokesApiInterface from './ChuckNorrisJokesApi.d';
+import type { jsonConfigurationType } from '../../fetchConfiguration';
+import type { ChuckNorrisJokesApiInterface } from './ChuckNorrisJokesApi.d';
 import jsonConfiguration from './ChuckNorrisJokesApi.config.json';
 import type { ResponseData } from '../../FetchDataProvider.d';
 
@@ -12,10 +12,18 @@ class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesA
         this.data = jsonConfiguration;
     }
 
-    async getRandomData() {
+    private normalizeData(value: string | number) {
+      return {
+        joke: value,
+        score: 0,
+        date: new Date().toISOString()
+      };
+    }
+
+    async getData() {
         const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint);
 
-        return super.normalizeData(jokeData.value);
+        return this.normalizeData(jokeData.value);
     }
 
     fetch<ResponseData> (endpoint: string) {

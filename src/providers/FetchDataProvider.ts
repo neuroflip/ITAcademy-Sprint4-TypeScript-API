@@ -1,19 +1,15 @@
 import type { FetchDataProviderInterface } from './FetchDataProvider.d'
-import type { ApiHeader } from './jsonConfiguration';
+import type { ApiHeader, QueryParams } from './fetchConfiguration';
 
 class FetchDataProvider implements FetchDataProviderInterface {
-     normalizeData(value: string) {
-      return {
-        joke: value,
-        score: 0,
-        date: new Date()
-      };
-    }
-
-    fetch<ResponseData>(url: string, headers?: ApiHeader): Promise<ResponseData> {
+    fetch<ResponseData>(url: string, 
+      headers?: ApiHeader,
+      params?: QueryParams): Promise<ResponseData> {
       headers = { ...headers, "User-Agent": navigator.userAgent };
 
-      return fetch(url, {
+      const urlWithParams = `${url}?${params ? new URLSearchParams(params).toString() : ""}`
+
+      return fetch(urlWithParams, {
           method: "GET",
           headers: headers
       }).then((response) => {

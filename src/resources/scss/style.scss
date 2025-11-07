@@ -1,4 +1,4 @@
-@import './jokes.scss';
+@use './jokes.scss';
 
 :root {
   font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -21,6 +21,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 

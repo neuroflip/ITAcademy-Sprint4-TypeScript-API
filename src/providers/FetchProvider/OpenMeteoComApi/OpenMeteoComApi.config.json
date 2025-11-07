@@ -1,0 +1,12 @@
+{
+    "endpoint": "https://api.open-meteo.com/v1/forecast/",
+    "headers": { 
+        "Accept": "application/json",
+        "Connection": "*/*"
+    },
+    "params": {
+        "latitude": "",
+        "longitude": "",
+        "current_weather": "true"
+    }
+}

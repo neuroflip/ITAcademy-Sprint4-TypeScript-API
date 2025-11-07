@@ -1,5 +1,5 @@
 
-import type { NormalizedData } from '../providers/FetchDataProvider.d';
+import type { NormalizedData } from '../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi.d';
 import type { JokesTrackerInterface, Report }  from './JokesTracker.d';
 
 class JokesTracker implements JokesTrackerInterface {
