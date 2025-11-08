@@ -1,8 +1,8 @@
 import type ApiManagerInterface from './ApiManager.d';
-import FetchDataProvider from '../providers/FetchDataProvider';
+import FetchDataProviderInterface from '../providers/FetchDataProvider';
 import type { ResponseData } from '../providers/FetchDataProvider.d';
 
-class ApiManager<T extends FetchDataProvider & { getData(): Promise<ResponseData> }> implements ApiManagerInterface<T>
+class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<ResponseData> }> implements ApiManagerInterface<T>
 {
     private fetchProviders: Array<T>;
 

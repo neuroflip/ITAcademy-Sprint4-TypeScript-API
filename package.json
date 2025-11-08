@@ -3,15 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/neuroflip/bookmark-landing-page#readme",
+  "main": "src/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint src/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API.git"
+  },
+  "author": "Jose A. Anguita",
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
     "sass": "^1.93.3",
     "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.3",
     "vite": "^7.1.7",
     "vitest": "^4.0.6"
   }

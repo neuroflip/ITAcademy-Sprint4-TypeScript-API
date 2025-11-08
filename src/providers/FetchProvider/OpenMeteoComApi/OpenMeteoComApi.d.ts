@@ -1,9 +1,9 @@
-import type { NormalizedData, ResponseData } from "../../FetchDataProvider.d";
+import type { ResponseData } from "../../FetchDataProvider.d";
 import { jsonConfigurationType } from "../../fetchConfiguration";
 
 interface OpenMeteoComApiInterface {
     data: jsonConfigurationType,
-    async getData(): Promise<ResponseData>
+    getData(): Promise<ResponseData>
 }
 
 export default OpenMeteoComApiInterface;

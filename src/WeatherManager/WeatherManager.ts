@@ -1,13 +1,14 @@
 
 import './styles/_weather.scss';
 
+import type { WeatherManagerInterface } from './WeatherManager.d';
 import ApiManager from "../ApiManager/ApiManager";
 import ApiManagerInterface from "../ApiManager/ApiManager";
 import type { ResponseData } from "../providers/FetchDataProvider.d";
 import type OpenMeteoComApiInterface from "../providers/FetchProvider/OpenMeteoComApi/OpenMeteoComApi";
 import OpenMeteoComApi from "../providers/FetchProvider/OpenMeteoComApi/OpenMeteoComApi";
 
-class WeatherManager {
+class WeatherManager implements WeatherManagerInterface {
   private apiManager: ApiManagerInterface<OpenMeteoComApiInterface>;
 
   constructor() {
@@ -39,7 +40,7 @@ class WeatherManager {
     }
   }
 
-  private getWheatherData() {
+  getWheatherData() {
     const weatherData = this.apiManager.getCurrentWeather();
 
     this.setUILoadingAndJokesText(true, '', '');

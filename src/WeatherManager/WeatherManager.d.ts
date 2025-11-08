@@ -1,5 +1,5 @@
-interface OpenMeteoComApiInterface {
-
+interface WeatherManagerInterface {
+    getWheatherData(): void
 }
 
 type NormalizedData = {
@@ -8,4 +8,4 @@ type NormalizedData = {
     date: Date
 }
 
-export { OpenMeteoComApiInterface, NormalizedData };
+export { NormalizedData, WeatherManagerInterface };

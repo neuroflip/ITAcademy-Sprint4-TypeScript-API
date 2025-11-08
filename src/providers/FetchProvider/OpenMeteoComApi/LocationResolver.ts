@@ -1,7 +1,9 @@
-export const getLocation = (locationResolved: Function, locationNotResolved: Function) => {
+import type { Location } from './LocationResolver.d';
+
+const getLocation = (locationResolved: (location: Location) => void, locationNotResolved: (error: GeolocationPositionError) => void) => {
   if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-          const newLocation = {
+          const newLocation: Location = {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
           }
@@ -11,3 +13,5 @@ export const getLocation = (locationResolved: Function, locationNotResolved: Fun
       });
   }
 }
+
+export { getLocation };

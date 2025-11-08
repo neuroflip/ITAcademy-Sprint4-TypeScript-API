@@ -6,6 +6,7 @@ import jsonConfiguration from './OpenMeteoComApi.config.json';
 import FetchDataProvider from '../../FetchDataProvider';
 import type { ApiHeader } from '../../fetchConfiguration';
 import { getLocation } from './LocationResolver';
+import type { Location } from './LocationResolver.d';
 
 class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterface {
     data: jsonConfigurationType;
@@ -17,15 +18,15 @@ class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterf
 
     async getData() {
         return new Promise<ResponseData>((resolve, reject) => {
-            getLocation(async (location: { [key:string]: any }) => {
-                jsonConfiguration.params.latitude = location.latitude;
-                jsonConfiguration.params.longitude = location.longitude;
+            getLocation(async (location: Location) => {
+                jsonConfiguration.params.latitude = String(location.latitude);
+                jsonConfiguration.params.longitude = String(location.longitude);
 
-                const weatherData = await this.fetch<ResponseData>(jsonConfiguration.endpoint, 
+                const weatherData = await this.fetch<ResponseData>(jsonConfiguration.endpoint,
                     jsonConfiguration.headers,
                     jsonConfiguration.params);
                 resolve(weatherData)
-            }, (error: Error) => {
+            }, (error: GeolocationPositionError) => {
                 reject(error);
             });
         });

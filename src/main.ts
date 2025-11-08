@@ -6,5 +6,8 @@ import WeatherManager from './WeatherManager/WeatherManager';
 const jokesManager = new JokesManager();
 const weatherManager = new WeatherManager();
 
+jokesManager.getNewJoke();
+weatherManager.getWheatherData();
+
 
 
