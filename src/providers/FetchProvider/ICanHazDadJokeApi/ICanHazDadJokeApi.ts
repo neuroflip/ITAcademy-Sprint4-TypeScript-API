@@ -14,7 +14,7 @@ class ICanHazDadJokeApi extends FetchDataProvider implements ICanHazDadJokeApiIn
         this.data = jsonConfiguration;
     }
 
-    private normalizeData(value: string | number) {
+    private normalizeData(value: string | number | ResponseData) {
       return {
         joke: value,
         score: 0,

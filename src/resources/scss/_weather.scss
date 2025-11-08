@@ -1,0 +1,24 @@
+.weatherContainer {
+  margin: 2rem;
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  justify-content: left;
+}
+
+.weather--temperature {
+  font-size: 1.5rem;
+  margin-right: 2rem;
+  align-self: center;
+}
+
+.weather--windSpeed {
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+@media screen and (width < 48em) {
+  .weatherContainer {
+    justify-content: center;
+  }
+}

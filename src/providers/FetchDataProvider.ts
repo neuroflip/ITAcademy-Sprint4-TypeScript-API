@@ -17,13 +17,10 @@ class FetchDataProvider implements FetchDataProviderInterface {
           return response.json() as Promise<ResponseData>;
         }
         throw new Error(`FetchDataProvider: error fetching ${url}`);
-      })
-      .then((responseJson: ResponseData) => {
+      }).then((responseJson: ResponseData) => {
         return responseJson;
-      })
-      .catch((error) => {
-        console.error(`FetchDataProvider: ${error.message}`);
-        throw error;
+      }).catch(() => {
+        throw new Error(`FetchDataProvider: error fetching ${url}`);
       });
     }
 }

@@ -1,3 +1,3 @@
 interface JokesManager {
-  prepareNextJokeButtonInteraction(): void;
+  
 }

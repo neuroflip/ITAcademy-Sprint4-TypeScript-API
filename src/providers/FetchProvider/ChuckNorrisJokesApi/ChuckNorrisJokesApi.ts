@@ -12,7 +12,7 @@ class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesA
         this.data = jsonConfiguration;
     }
 
-    private normalizeData(value: string | number) {
+    private normalizeData(value: string | number | ResponseData) {
       return {
         joke: value,
         score: 0,

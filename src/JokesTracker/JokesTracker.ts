@@ -2,6 +2,10 @@
 import type { NormalizedData } from '../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi.d';
 import type { JokesTrackerInterface, Report }  from './JokesTracker.d';
 
+const NOTFUNNY = 1;
+const NORMAL = 0;
+const FUNNY = 2; 
+
 class JokesTracker implements JokesTrackerInterface {
   private reportJokes: Array<Report>;
 
@@ -24,7 +28,7 @@ class JokesTracker implements JokesTrackerInterface {
     });
   }
 
-  setValueToCurrentJoke(value: number) {
+  private setValueToCurrentJoke(value: number) {
     const currentJoke = this.reportJokes[this.reportJokes.length-1];
 
     currentJoke.score = value;
@@ -36,13 +40,13 @@ class JokesTracker implements JokesTrackerInterface {
     const plus3Button = document.getElementById('plus3button');
 
     plus1Button?.addEventListener('click', () => {
-      this.setValueToCurrentJoke(1);
+      this.setValueToCurrentJoke(NOTFUNNY);
     });
     plus2Button?.addEventListener('click', () => {
-      this.setValueToCurrentJoke(2);
+      this.setValueToCurrentJoke(NORMAL);
     });
     plus3Button?.addEventListener('click', () => {
-      this.setValueToCurrentJoke(3);
+      this.setValueToCurrentJoke(FUNNY);
     });
   }
 }

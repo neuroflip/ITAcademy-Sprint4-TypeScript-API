@@ -12,14 +12,32 @@ class WeatherManager {
     this.getWheatherData();
   }
 
-  async getWheatherData() {
-    const weatherContainer = document.querySelector('.weatherContainer');
-    const weatherData = this.apiManager.getCurrentWeather()
+  private setUILoadingAndJokesText = (clearContainer: boolean, temperature: string, wind: string) => {
+    const weahterTemp = document.querySelector('.weather--temperature');
+    const weahterWind = document.querySelector('.weather--windSpeed');
+    const spinner = document.querySelector('.weatherContainer .spinner');
 
+    if (clearContainer) {
+      if(weahterTemp) {
+        weahterTemp.textContent = temperature;
+      }
+      if(weahterWind) {
+        weahterWind.textContent = wind;
+      }
+    }
+    spinner?.classList.toggle('hidden');
+  }
+
+  private getWheatherData() {
+    const weatherData = this.apiManager.getCurrentWeather();
+
+    this.setUILoadingAndJokesText(true, '', '');
     weatherData.then((weatherData: ResponseData) => {
       const currentWeather: ResponseData = weatherData.current_weather as ResponseData;
-      
-      weatherContainer && (weatherContainer.textContent = String(currentWeather.temperature));
+        
+      this.setUILoadingAndJokesText(true, `${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
+    }).catch(() => {
+      this.setUILoadingAndJokesText(true, 'An error has occurred, please try again', '');
     });
   }
 }

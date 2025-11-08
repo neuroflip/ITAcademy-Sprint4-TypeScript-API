@@ -12,25 +12,37 @@ class JokesManager {
   constructor() {
     this.apiManager = new ApiManager([new ICanHazDadJokeApi(), new ChuckNorrisJokesApi()]);
     this.jokesTracker = new JokesTracker();
-    this.jokesRequestCallback();
+    this.getNewJoke();
     this.prepareNextJokeButtonInteraction();
   }
 
-  prepareNextJokeButtonInteraction() {
+  private prepareNextJokeButtonInteraction() {
     const button = document.getElementById('jokesButton');
 
-    button?.addEventListener('click', this.jokesRequestCallback.bind(this));
+    button?.addEventListener('click', this.getNewJoke.bind(this));
   }
 
-  jokesRequestCallback() {
-    const jokeData = this.apiManager.getRandomJoke();
+  private setUILoadingAndJokesText = (clearContainer: boolean, text: string) => {
     const jokeContainer = document.querySelector('.joke');
+    const spinner = document.querySelector('.jokesContainer .spinner');
 
+    if(clearContainer && jokeContainer) {
+      const textContent = text.length > 0 ? `"${text}"` : '';
+
+      jokeContainer.textContent = textContent;
+    }
+    spinner?.classList.toggle('hidden');
+  }
+
+  private getNewJoke() {
+    const jokeData = this.apiManager.getRandomJoke();
+
+    this.setUILoadingAndJokesText(true, '');
     jokeData.then((jokeData: NormalizedData) => {
       this.jokesTracker.setCurrentJoke(jokeData);
-      if (jokeContainer) {
-        jokeContainer.textContent = jokeData.joke;
-      }
+      this.setUILoadingAndJokesText(true, jokeData.joke);
+    }).catch(() => {
+      this.setUILoadingAndJokesText(true, 'An error has occurred, please try again'); 
     });
   }
 }

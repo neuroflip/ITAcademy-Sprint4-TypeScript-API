@@ -8,6 +8,4 @@ type ResponseData = {
     [key: string]: string | number | ResponseData
 }
 
-
-
 export { FetchDataProviderInterface, ResponseData };

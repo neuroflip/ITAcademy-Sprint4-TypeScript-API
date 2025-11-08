@@ -1,13 +1,18 @@
 @use './jokes.scss';
+@use './weather.scss';
+@use './spinner.scss';
+
 
 :root {
   font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  width: 100%;
+  height: 100%;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(55, 55, 55, 0.87);
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,12 +22,15 @@
 
 body {
   margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient id=%22b%22 gradientTransform=%22rotate(-45 .5 .5)%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23FAACA8%22%2F%3E%3Cstop offset=%22100%25%22 stop-color=%22%23DDD6F3%22%2F%3E%3C%2FlinearGradient%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M903 630q-45 130-148.5 233t-252 95q-148.5-8-261-98T65 635Q1 500 56.5 359t180-214.5Q361 71 494 90.5T744 174q117 64 160.5 195T903 630Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22url(%23b)%22 d=%22M903 630q-45 130-148.5 233t-252 95q-148.5-8-261-98T65 635Q1 500 56.5 359t180-214.5Q361 71 494 90.5T744 174q117 64 160.5 195T903 630Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  width: 100vw;
+  height: 100%;
 }
 
 h1 {
@@ -30,16 +38,21 @@ h1 {
   line-height: 1.1;
 }
 
+.hidden {
+  display: none;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.4em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+ /*box-shadow: global.$shadow-box;*/
 }
 button:hover {
   border-color: #646cff;
