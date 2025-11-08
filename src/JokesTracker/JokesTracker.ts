@@ -1,10 +1,12 @@
 
-import type { NormalizedData } from '../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi.d';
+import './styles/_jokesTracker.scss';
+
+import type { NormalizedData } from '../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi';
 import type { JokesTrackerInterface, Report }  from './JokesTracker.d';
 
 const NOTFUNNY = 1;
 const NORMAL = 0;
-const FUNNY = 2; 
+const FUNNY = 2;
 
 class JokesTracker implements JokesTrackerInterface {
   private reportJokes: Array<Report>;

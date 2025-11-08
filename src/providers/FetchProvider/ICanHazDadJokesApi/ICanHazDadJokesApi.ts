@@ -1,12 +1,12 @@
 
-import type { ICanHazDadJokeApiInterface } from './ICanHazDadJokeApi.d';
+import type { ICanHazDadJokesApiInterface } from './ICanHazDadJokeApi.d';
 import type { ResponseData } from '../../FetchDataProvider.d';
 import type { jsonConfigurationType } from '../../fetchConfiguration';
-import jsonConfiguration from './ICanHazDadJokeApi.config.json';
+import jsonConfiguration from './ICanHazDadJokesApi.config.json';
 import FetchDataProvider from '../../FetchDataProvider';
 import type { ApiHeader } from '../../fetchConfiguration';
 
-class ICanHazDadJokeApi extends FetchDataProvider implements ICanHazDadJokeApiInterface {
+class ICanHazDadJokesApi extends FetchDataProvider implements ICanHazDadJokesApiInterface {
     data: jsonConfigurationType;
 
     constructor () {
@@ -33,4 +33,4 @@ class ICanHazDadJokeApi extends FetchDataProvider implements ICanHazDadJokeApiIn
     }
 }
 
-export default ICanHazDadJokeApi;
+export default ICanHazDadJokesApi;

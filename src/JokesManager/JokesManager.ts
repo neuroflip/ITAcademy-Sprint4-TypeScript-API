@@ -1,16 +1,19 @@
+
+import './styles/_jokes.scss';
+
 import type ApiManagerInterface from "../ApiManager/ApiManager.d";
 import ApiManager from "../ApiManager/ApiManager";
 import ChuckNorrisJokesApi from "../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi";
-import ICanHazDadJokeApi from "../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi";
-import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokeApi/ICanHazDadJokeApi.d";
+import ICanHazDadJokesApi from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokesApi";
+import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi";
 import JokesTracker from "../JokesTracker/JokesTracker";
 
 class JokesManager {
-  private apiManager: ApiManagerInterface<ICanHazDadJokeApi | ChuckNorrisJokesApi>;
+  private apiManager: ApiManagerInterface<ICanHazDadJokesApi | ChuckNorrisJokesApi>;
   private jokesTracker: JokesTracker;
 
   constructor() {
-    this.apiManager = new ApiManager([new ICanHazDadJokeApi(), new ChuckNorrisJokesApi()]);
+    this.apiManager = new ApiManager([new ICanHazDadJokesApi(), new ChuckNorrisJokesApi()]);
     this.jokesTracker = new JokesTracker();
     this.getNewJoke();
     this.prepareNextJokeButtonInteraction();

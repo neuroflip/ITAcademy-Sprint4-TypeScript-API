@@ -1,3 +1,6 @@
+
+import './styles/_weather.scss';
+
 import ApiManager from "../ApiManager/ApiManager";
 import ApiManagerInterface from "../ApiManager/ApiManager";
 import type { ResponseData } from "../providers/FetchDataProvider.d";

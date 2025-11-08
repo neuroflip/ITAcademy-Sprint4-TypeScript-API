@@ -2,7 +2,7 @@ import type { FetchDataProviderInterface } from './FetchDataProvider.d'
 import type { ApiHeader, QueryParams } from './fetchConfiguration';
 
 class FetchDataProvider implements FetchDataProviderInterface {
-    fetch<ResponseData>(url: string, 
+    fetch<ResponseData>(url: string,
       headers?: ApiHeader,
       params?: QueryParams): Promise<ResponseData> {
       headers = { ...headers, "User-Agent": navigator.userAgent };

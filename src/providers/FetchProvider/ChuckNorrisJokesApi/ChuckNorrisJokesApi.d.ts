@@ -1,5 +1,7 @@
+import { jsonConfigurationType } from "../../fetchConfiguration"
+
 interface ChuckNorrisJokesApiInterface {
-    data: jsonConfigurationInterface
+    data: jsonConfigurationType
     getData(): Promise<ResponseData>
 }
 
@@ -9,5 +11,5 @@ type NormalizedData = {
     date: Date
 }
 
-export {ChuckNorrisJokesApiInterface, NormalizedData };
+export { ChuckNorrisJokesApiInterface, NormalizedData };
 
