@@ -6,8 +6,8 @@ export const getLocation = (locationResolved: Function, locationNotResolved: Fun
               longitude: position.coords.longitude
           }
           locationResolved(newLocation);
-      }, ()=>{
-        locationNotResolved();
+      }, (error)=>{
+        locationNotResolved(error);
       });
   }
 }

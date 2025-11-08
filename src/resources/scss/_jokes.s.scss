@@ -1,0 +1,20 @@
+@media screen and (width < 38em) {
+  .jokesContainer {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .joke {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .punctuationContainer {
+      margin: 0;
+    }
+
+    button {
+      padding: 0.5rem;
+    }
+  }
+}

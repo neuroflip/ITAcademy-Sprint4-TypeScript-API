@@ -25,8 +25,8 @@ class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterf
                     jsonConfiguration.headers,
                     jsonConfiguration.params);
                 resolve(weatherData)
-            }, () => {
-                reject();
+            }, (error: Error) => {
+                reject(error);
             });
         });
     }

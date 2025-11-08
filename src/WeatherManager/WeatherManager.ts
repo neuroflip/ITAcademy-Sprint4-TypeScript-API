@@ -28,16 +28,26 @@ class WeatherManager {
     spinner?.classList.toggle('hidden');
   }
 
+  private setError(errorMessage: string) {
+    const errorContainer = document.querySelector('.error');
+
+    if (errorContainer) {
+      errorContainer.textContent = errorMessage;
+    }
+  }
+
   private getWheatherData() {
     const weatherData = this.apiManager.getCurrentWeather();
 
     this.setUILoadingAndJokesText(true, '', '');
     weatherData.then((weatherData: ResponseData) => {
       const currentWeather: ResponseData = weatherData.current_weather as ResponseData;
-        
+
       this.setUILoadingAndJokesText(true, `${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
+      this.setError('');
     }).catch(() => {
-      this.setUILoadingAndJokesText(true, 'An error has occurred, please try again', '');
+      this.setUILoadingAndJokesText(true, '', '');
+      this.setError('‼️ Please review your location privacy settings and weather api service status');
     });
   }
 }

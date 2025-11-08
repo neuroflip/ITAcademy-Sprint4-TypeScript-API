@@ -42,7 +42,7 @@ class JokesManager {
       this.jokesTracker.setCurrentJoke(jokeData);
       this.setUILoadingAndJokesText(true, jokeData.joke);
     }).catch(() => {
-      this.setUILoadingAndJokesText(true, 'An error has occurred, please try again'); 
+      this.setUILoadingAndJokesText(true, 'An error has occurred, please try again');
     });
   }
 }

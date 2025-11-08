@@ -17,7 +17,7 @@ class ApiManager<T extends FetchDataProvider & { getData(): Promise<ResponseData
     }
 
     async getCurrentWeather():  Promise<ResponseData> {
-        return await this.fetchProviders[0].getData();        
+        return await this.fetchProviders[0].getData();
     }
 }
 

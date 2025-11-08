@@ -1,9 +1,18 @@
+@use "./weather.s";
+
 .weatherContainer {
   margin: 2rem;
   text-align: center;
   width: 100vw;
   display: flex;
   justify-content: left;
+
+
+  .error {
+    line-height: 1rem;
+    margin: 0 auto;
+    align-self: center;
+  }
 }
 
 .weather--temperature {

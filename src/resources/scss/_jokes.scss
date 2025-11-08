@@ -1,3 +1,5 @@
+@use "./jokes.s";
+
 .jokesContainer {
   width: 100vw;
   height: 100%;
@@ -21,6 +23,7 @@
 
   button {
     align-self: center;
+    padding: 1.5rem;
   }
 
   .spinner {
@@ -35,7 +38,7 @@
 }
 
 .plusButton {
-  font-size: 2.5rem;
+  font-size: 3rem;
   background-color: initial;
   padding: 1rem;
 }
@@ -48,30 +51,23 @@
   margin: auto;
 }
 
-@media screen and (width < 38em) { 
-  .joke {
-    font-size: 1.3rem;
-  }
-/*
-  html body {
-    background-size: cover;
-    background-position: 0px 150px;
-  }
-*/
+@media screen and (width < 38em) {
   .jokesContainer {
     h1 {
-      /*background: white;
-      border-radius: 3rem;*/
-      padding: 2rem;
       font-size: 2rem;
     }
 
     .joke {
       margin: 0;
+      font-size: 1.3rem;
     }
 
     .punctuationContainer {
       margin: 0;
+    }
+
+    button {
+      padding: 0.5rem;
     }
   }
 }
