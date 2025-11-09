@@ -4,7 +4,7 @@
 
 This repo contains the solution for the ITAcademy Sprint 4 (Jokes and weather apis using typescript).
 
-![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/live.png)
+![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API/blob/main/etc/live.png)
 
 Take a look to the live demo at: [https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/](https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/)
 <br>
