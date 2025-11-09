@@ -12,7 +12,6 @@ export const init = () => {
 }
 
 if (process.env.NODE_ENV !== "test") {
-    console.log("entra en diff test")
     init();
 }
 

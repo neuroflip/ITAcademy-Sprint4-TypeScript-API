@@ -1,24 +1,49 @@
-import type ApiManagerInterface from './ApiManager.d';
+import type { ApiManagerInterface, Providers } from './ApiManager.d';
 import FetchDataProviderInterface from '../providers/FetchDataProvider';
 import type { ResponseData } from '../providers/FetchDataProvider.d';
 
 class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<ResponseData> }> implements ApiManagerInterface<T>
 {
-    private fetchProviders: Array<T>;
+    providers: Providers;
 
-    constructor(fetchProviders: Array<T>) {
-        this.fetchProviders = fetchProviders;
+    constructor() {
+        this.providers = {
+            jokeProviders: [],
+            weatherProviders: []
+        };
+    }
+
+    addJokesProviders(providers: Array<T>) {
+        this.providers.jokeProviders = providers;
+    }
+
+    addWeatherProviders(providers: Array<T>) {
+        this.providers.weatherProviders = providers;
     }
 
     async getRandomJoke(): Promise<ResponseData> {
-        const providerIndex = Math.round(Math.random());
+        if (this.providers.jokeProviders.length === 0) {
+            console.log('error')
+            throw new Error('No joke providers added to the ApiManager');
+        }
+        const providerIndex = getRandomInt(0, this.providers.jokeProviders.length - 1);
 
-        return await this.fetchProviders[providerIndex].getData();
+        return await this.providers.jokeProviders[providerIndex].getData();
     }
 
     async getCurrentWeather():  Promise<ResponseData> {
-        return await this.fetchProviders[0].getData();
+        if (this.providers.weatherProviders.length === 0) throw new Error('No weather providers added to the ApiManager');
+        const providerIndex = getRandomInt(0, this.providers.weatherProviders.length - 1);
+
+        return await this.providers.weatherProviders[providerIndex].getData();
     }
+}
+
+const getRandomInt = (min: number, max: number) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default ApiManager;
