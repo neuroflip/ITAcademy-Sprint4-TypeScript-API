@@ -18,7 +18,7 @@ class JokesManager implements JokesManagerInterface {
     this.apiManager = new ApiManager();
     this.jokesTracker = new JokesTracker();
     this.apiManager.addJokesProviders([new ICanHazDadJokesApi(), new ChuckNorrisJokesApi()]);
-    prepareNextJokeButtonInteraction(this.getNewJoke);
+    prepareNextJokeButtonInteraction(this.getNewJoke.bind(this));
   }
 
   getNewJoke() {

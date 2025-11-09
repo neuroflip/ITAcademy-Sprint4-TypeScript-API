@@ -6,7 +6,6 @@ type Providers = {
     weatherProviders: Array<T>
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface ApiManagerInterface<T extends FetchDataProviderInterface & { getData(): Promise<ResponseData> }> {
     providers: Providers,
     addJokesProviders(providers: Array<T>),

@@ -10,7 +10,7 @@ class JokesTracker implements JokesTrackerInterface {
 
   constructor() {
     this.reportJokes = [];
-    prepareJokeRatingInteraction(this.setValueToCurrentJoke);
+    prepareJokeRatingInteraction(this.setValueToCurrentJoke.bind(this));
   }
 
   setCurrentJoke(jokeData: NormalizedData) {
