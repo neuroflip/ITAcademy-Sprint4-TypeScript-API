@@ -19,6 +19,7 @@
   "author": "Jose A. Anguita",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.0",
     "eslint": "^9.39.1",
     "sass": "^1.93.3",
     "typescript": "~5.9.3",

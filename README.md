@@ -4,7 +4,7 @@
 
 This repo contains the solution for the ITAcademy Sprint 4 (Jokes and weather apis using typescript).
 
-![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/screenshot.png)
+![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/)
 
 Take a look to the live demo at: [https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/](https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/)
 <br>
@@ -74,6 +74,12 @@ The code architecture is organized in modules. A module directory incapsulates a
  - there is an error management when accessing to the APIs. Each component will capture the possible errors to show a message to the user in ui
  - the code done in typescript using OO and inheritance. This way we can reuse easyly the fetch code and implement new data fetch providers to access new apis
  - all the modules includes his own tests
+
+## CI pipeline
+
+The project is managing a CI process using test execution and eslint execution using github actions. Check file .github/workflows/main.yml for more information. This pipeline is executed when some developer wants creates a PR to integrate into main (as example).
+
+![alt ci pipeline execution result in a correct PR](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/ci.png)
 
 ## Testing
 The tests are implemented using vitest.
