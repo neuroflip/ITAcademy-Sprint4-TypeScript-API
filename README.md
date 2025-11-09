@@ -79,7 +79,7 @@ The code architecture is organized in modules. A module directory incapsulates a
 
 The project is managing a CI process using test execution and eslint execution using github actions. Check file .github/workflows/main.yml for more information. This pipeline is executed when some developer wants creates a PR to integrate into main (as example).
 
-![alt ci pipeline execution result in a correct PR](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/)
+![alt ci pipeline execution result in a correct PR](https://github.com/neuroflip/ITAcademy-frontend-shop/blob/main/etc/ci.png)
 
 ## Testing
 The tests are implemented using vitest.
