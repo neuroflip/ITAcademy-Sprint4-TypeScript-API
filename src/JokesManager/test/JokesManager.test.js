@@ -1,8 +1,6 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import JokesManager from '../JokesManager';
 
-const flushPromises = () => new Promise(setImmediate);
-
 const ApiManagerMock = { 
     addJokesProviders: vi.fn(),
     addWeatherProviders: vi.fn(),
@@ -32,7 +30,6 @@ vi.mock('../../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi',
   default: vi.fn()
 }));
 
-import JokesTracker from '../../JokesTracker/JokesTracker';
 const jokesTrackerMock = { setCurrentJoke: vi.fn() };
 vi.mock('../../JokesTracker/JokesTracker', () => {
   return {
@@ -55,7 +52,7 @@ describe('JokesManager', () => {
     });
 
     it('calls addJokesProviders with the correct providers', () => {
-        const jokeManager = new JokesManager();
+        new JokesManager();
 
         expect(ApiManagerMock.addJokesProviders).toHaveBeenCalledTimes(1);
         expect(ApiManagerMock.addJokesProviders).toHaveBeenCalledWith([
@@ -87,7 +84,8 @@ describe('JokesManager', () => {
 
         jokesManager.getNewJoke();
         
-        await flushPromises();
+        await Promise.resolve();
+
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
         expect(setUILoadingAndJokesText).toHaveBeenCalledTimes(2);
         expect(setUILoadingAndJokesText).toHaveBeenCalledWith(true, '');
