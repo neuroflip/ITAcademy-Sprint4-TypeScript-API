@@ -1,8 +1,10 @@
-import FetchDataProvider from '../../FetchDataProvider';
 import type { jsonConfigurationType } from '../../fetchConfiguration';
 import type { ChuckNorrisJokesApiInterface } from './ChuckNorrisJokesApi.d';
-import jsonConfiguration from './ChuckNorrisJokesApi.config.json';
 import type { ResponseData } from '../../FetchDataProvider.d';
+
+import FetchDataProvider from '../../FetchDataProvider';
+import jsonConfiguration from './ChuckNorrisJokesApi.config.json';
+
 
 class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesApiInterface {
     data: jsonConfigurationType;

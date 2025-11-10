@@ -23,7 +23,6 @@ class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<Res
 
     async getRandomJoke(): Promise<ResponseData> {
         if (this.providers.jokeProviders.length === 0) {
-            console.log('error')
             throw new Error('No joke providers added to the ApiManager');
         }
         const providerIndex = getRandomInt(0, this.providers.jokeProviders.length - 1);

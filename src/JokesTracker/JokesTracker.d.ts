@@ -2,7 +2,8 @@
 import type { NormalizedData } from '../providers/FetchDataProvider.d'
 
 interface JokesTrackerInterface {
-  setCurrentJoke(jokeData: NormalizedData): void
+  setCurrentJoke(jokeData: NormalizedData): void,
+  getReportJokes(): void
 }
 
 type Report = {

@@ -1,4 +1,4 @@
-const setUILoadingAndJokesText = (clearContainer: boolean, temperature: string, wind: string) => {
+const setUILoadingAndWeatherText = (clearContainer: boolean, temperature: string, wind: string) => {
     const weahterTemp = document.querySelector('.weather--temperature');
     const weahterWind = document.querySelector('.weather--windSpeed');
     const spinner = document.querySelector('.weatherContainer .spinner');
@@ -23,4 +23,4 @@ const setError = (errorMessage: string) => {
   }
 
 
-  export { setError, setUILoadingAndJokesText };
+  export { setError, setUILoadingAndWeatherText };

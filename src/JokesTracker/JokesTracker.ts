@@ -27,10 +27,18 @@ class JokesTracker implements JokesTrackerInterface {
     });
   }
 
+  getReportJokes() {
+    return this.reportJokes;
+  }
+
   private setValueToCurrentJoke(value: number) {
     const currentJoke = this.reportJokes[this.reportJokes.length-1];
 
-    currentJoke.score = value;
+    if (!currentJoke){
+      throw new Error('Try to score the current joke when there is no current joke')
+    } else {
+      currentJoke.score = value;  
+    }
   }
 }
 
