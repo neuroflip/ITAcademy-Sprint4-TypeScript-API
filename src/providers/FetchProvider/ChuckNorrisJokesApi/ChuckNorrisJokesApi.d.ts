@@ -8,7 +8,7 @@ interface ChuckNorrisJokesApiInterface {
 type NormalizedData = {
     joke: string,
     score: number,
-    date: Date
+    date: string
 }
 
 export { ChuckNorrisJokesApiInterface, NormalizedData };

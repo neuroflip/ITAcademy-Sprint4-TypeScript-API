@@ -3,10 +3,11 @@ import './styles/_jokes.scss';
 
 import type JokesManagerInterface from './JokesManager.d';
 import type { ApiManagerInterface } from "../ApiManager/ApiManager.d";
+import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi";
+
 import ApiManager from "../ApiManager/ApiManager";
 import ChuckNorrisJokesApi from "../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi";
 import ICanHazDadJokesApi from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokesApi";
-import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi";
 import JokesTracker from "../JokesTracker/JokesTracker";
 import { prepareNextJokeButtonInteraction, setUILoadingAndJokesText } from './JokesManagerUI';
 
@@ -23,7 +24,6 @@ class JokesManager implements JokesManagerInterface {
 
   getNewJoke() {
     const jokeData = this.apiManager.getRandomJoke();
-
     setUILoadingAndJokesText(true, '');
     jokeData.then((jokeData: NormalizedData) => {
       this.jokesTracker.setCurrentJoke(jokeData);

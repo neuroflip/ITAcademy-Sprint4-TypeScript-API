@@ -5,7 +5,7 @@ interface WeatherManagerInterface {
 type NormalizedData = {
     joke: string,
     score: number,
-    date: Date
+    date: string
 }
 
 export { NormalizedData, WeatherManagerInterface };

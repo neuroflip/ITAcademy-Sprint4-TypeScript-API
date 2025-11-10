@@ -9,7 +9,7 @@ interface ICanHazDadJokesApiInterface {
 type NormalizedData = {
     joke: string,
     score: number,
-    date: Date
+    date: string
 }
 
 export { ICanHazDadJokesApiInterface, NormalizedData };
