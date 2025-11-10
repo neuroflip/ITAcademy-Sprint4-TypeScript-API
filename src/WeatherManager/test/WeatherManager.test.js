@@ -1,7 +1,6 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import WeatherManager from '../WeatherManager'
 import { setError, setUILoadingAndWeatherText } from '../WeatherManagerUI';
-import ApiManager from '../../ApiManager/ApiManager';
 
 const ApiManagerMock = { 
     addJokesProviders: vi.fn(),
@@ -39,7 +38,7 @@ describe('WeatherManger', () => {
     });
 
     it('creates the apiManager, adds a weather provider and gets the geather data', async () => {
-        const weatherManager = new WeatherManager();
+        new WeatherManager();
 
         await Promise.resolve();
 
@@ -56,7 +55,7 @@ describe('WeatherManger', () => {
     });
 
     it('gets the geather data on constructor but the api rejects', async () => {
-        const weatherManager = new WeatherManager();
+        new WeatherManager();
 
         await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
 

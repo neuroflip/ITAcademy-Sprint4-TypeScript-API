@@ -20,14 +20,14 @@ describe('JokesTracker', () => {
         expect(prepareJokeRatingInteraction).toHaveBeenCalledWith(expect.any(Function));
     });
 
-    it('throws an error if setValueToCurrentJoke is called with no previous report data'), () => {
-      const jokesTracker = new JokesTracker();
+    it('throws an error if setValueToCurrentJoke is called with no previous report data', () => {
+      new JokesTracker();
       const cb = prepareJokeRatingInteraction.mock.calls[0][0];
 
-      expect(cb(1000)).toThrowError('Try to score the current joke when there is no current joke');
-    }
+      expect(() => cb(1000)).toThrowError('Try to score the current joke when there is no current joke');
+    });
 
-    it('sets the reported score value to the current joke'), () => {
+    it('sets the reported score value to the current joke', () => {
       const jokesTracker = new JokesTracker();
       const initialData = {
         "joke": "this is a joke",
@@ -45,7 +45,7 @@ describe('JokesTracker', () => {
         "score": 1000,
         "date": 'date iso string'
       }])
-    }
+    });
 
     describe('JokesTracker setCurrentJoke', () => {
       it('adds a report joke when calling setCurrentJoke and there is no current data', () => {
