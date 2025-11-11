@@ -27,13 +27,13 @@ describe('', () => {
     const spinner = globalThis.document.getElementById('spinner');
 
     if (spinner) {
-      setUILoadingAndWeatherText(true, '', '');
+      setUILoadingAndWeatherText('', '');
       expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
 
-      setUILoadingAndWeatherText(true, '', '');
+      setUILoadingAndWeatherText('', '');
       expect(spinner.className.indexOf('hidden') < 0).toBeFalsy();
 
-      setUILoadingAndWeatherText(true, '', '');
+      setUILoadingAndWeatherText('', '');
       expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
     }
   });
@@ -42,7 +42,7 @@ describe('', () => {
     const temperatureContainer = globalThis.document.querySelector('.weather--temperature');
 
     if (temperatureContainer) {
-      setUILoadingAndWeatherText(true, 'Temperature', '');
+      setUILoadingAndWeatherText('Temperature', '');
       expect(temperatureContainer.textContent).toEqual('Temperature');      
     }
   });
@@ -51,7 +51,7 @@ describe('', () => {
     const windContainer = globalThis.document.querySelector('.weather--windSpeed');
 
     if (windContainer) {
-      setUILoadingAndWeatherText(true, '', 'Wind speed');
+      setUILoadingAndWeatherText('', 'Wind speed');
       expect(windContainer.textContent).toEqual('Wind speed');
     }
   });

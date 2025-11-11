@@ -51,27 +51,27 @@ describe('', () => {
   it('toggles the spinner status (prepareNextJokeButtonInteraction)', () => {
     const spinner = globalThis.document.querySelector('.spinner');
 
-    setUILoadingAndJokesText(true, '');
+    setUILoadingAndJokesText('');
     expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
 
-    setUILoadingAndJokesText(true, '');
+    setUILoadingAndJokesText('');
     expect(spinner.className.indexOf('hidden') < 0).toBeFalsy();
 
-    setUILoadingAndJokesText(true, '');
+    setUILoadingAndJokesText('');
     expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
   });
 
   it('clears the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
     const jokeContainer = globalThis.document.querySelector('.joke');
 
-    setUILoadingAndJokesText(true, '');
+    setUILoadingAndJokesText('');
     expect(jokeContainer.textContent).toEqual('');
   });
 
   it('sets the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
     const jokeContainer = globalThis.document.querySelector('.joke');
 
-    setUILoadingAndJokesText(true, 'This is a new joke');
+    setUILoadingAndJokesText('This is a new joke');
     expect(jokeContainer.textContent).toEqual('"This is a new joke"');
   });
 });

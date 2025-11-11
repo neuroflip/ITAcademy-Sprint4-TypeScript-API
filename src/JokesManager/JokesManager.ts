@@ -24,12 +24,12 @@ class JokesManager implements JokesManagerInterface {
 
   getNewJoke() {
     const jokeData = this.apiManager.getRandomJoke();
-    setUILoadingAndJokesText(true, '');
+    setUILoadingAndJokesText('');
     jokeData.then((jokeData: NormalizedData) => {
       this.jokesTracker.setCurrentJoke(jokeData);
-      setUILoadingAndJokesText(true, jokeData.joke);
+      setUILoadingAndJokesText(jokeData.joke);
     }).catch(() => {
-      setUILoadingAndJokesText(true, 'An error has occurred, please try again');
+      setUILoadingAndJokesText('An error has occurred, please try again');
     });
   }
 }

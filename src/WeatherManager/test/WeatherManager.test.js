@@ -49,8 +49,8 @@ describe('WeatherManger', () => {
         expect(await ApiManagerMock.getCurrentWeather).toHaveBeenCalledTimes(1);
 
         expect(setUILoadingAndWeatherText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '', '');
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '11°C','12Km/h');
+        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('', '');
+        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('11°C','12Km/h');
         expect(setError).toHaveBeenCalledWith('')
     });
 
@@ -60,8 +60,8 @@ describe('WeatherManger', () => {
         await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
 
         expect(setUILoadingAndWeatherText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '', '');
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '','');
+        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('', '');
+        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('','');
         expect(setError).toHaveBeenCalledWith('‼️ Please review your location privacy settings and the weather api service status.')
     });
 });

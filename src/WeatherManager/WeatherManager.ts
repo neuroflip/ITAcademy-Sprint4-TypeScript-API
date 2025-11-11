@@ -21,14 +21,14 @@ class WeatherManager implements WeatherManagerInterface {
 
   getWheatherData() {
     const weatherData = this.apiManager.getCurrentWeather();
-    setUILoadingAndWeatherText(true, '', '');
+    setUILoadingAndWeatherText('', '');
     weatherData.then((weatherData: ResponseData) => {
       const currentWeather: ResponseData = weatherData.current_weather as ResponseData;
 
-      setUILoadingAndWeatherText(true, `${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
+      setUILoadingAndWeatherText(`${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
       setError('');
     }).catch(() => {
-      setUILoadingAndWeatherText(true, '', '');
+      setUILoadingAndWeatherText('', '');
       setError('‼️ Please review your location privacy settings and the weather api service status.');
     });
   }

@@ -70,13 +70,13 @@ describe('JokesManager', () => {
 
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
         expect(setUILoadingAndJokesText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith(true, '');
+        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('');
         expect(jokesTrackerMock.setCurrentJoke).toHaveBeenCalledWith({ 
             joke: 'joke',
             score: 100,
             date: "Date ISOString"
         });
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith(true, 'joke');
+        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('joke');
     });
 
     it('Sets the error in UI when the getRandomJoke fails', async () => {
@@ -88,7 +88,7 @@ describe('JokesManager', () => {
 
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
         expect(setUILoadingAndJokesText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith(true, '');
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith(true, 'An error has occurred, please try again');
+        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('');
+        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('An error has occurred, please try again');
     });
 });
