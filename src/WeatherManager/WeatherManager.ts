@@ -29,7 +29,7 @@ class WeatherManager implements WeatherManagerInterface {
       setError('');
     }).catch(() => {
       setUILoadingAndWeatherText(true, '', '');
-      setError('‼️ Please review your location privacy settings and weather api service status');
+      setError('‼️ Please review your location privacy settings and the weather api service status.');
     });
   }
 }

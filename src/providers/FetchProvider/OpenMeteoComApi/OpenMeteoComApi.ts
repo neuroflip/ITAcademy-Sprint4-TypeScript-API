@@ -2,11 +2,13 @@
 import type OpenMeteoComApiInterface from './OpenMeteoComApi.d';
 import type { ResponseData } from '../../FetchDataProvider.d';
 import type { jsonConfigurationType, QueryParams } from '../../fetchConfiguration';
+import type { ApiHeader } from '../../fetchConfiguration';
+import type { Location } from './LocationResolver.d';
+
 import jsonConfiguration from './OpenMeteoComApi.config.json';
 import FetchDataProvider from '../../FetchDataProvider';
-import type { ApiHeader } from '../../fetchConfiguration';
 import { getLocation } from './LocationResolver';
-import type { Location } from './LocationResolver.d';
+
 
 class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterface {
     data: jsonConfigurationType;
@@ -22,10 +24,14 @@ class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterf
                 jsonConfiguration.params.latitude = String(location.latitude);
                 jsonConfiguration.params.longitude = String(location.longitude);
 
-                const weatherData = await this.fetch<ResponseData>(jsonConfiguration.endpoint,
-                    jsonConfiguration.headers,
-                    jsonConfiguration.params);
-                resolve(weatherData)
+                try {
+                    const weatherData = await this.fetch<ResponseData>(jsonConfiguration.endpoint,
+                        jsonConfiguration.headers,
+                        jsonConfiguration.params);
+                    resolve(weatherData)
+                } catch(error) {
+                      reject(new Error('OpenMeteoComAPI cannot be accessed.'));
+                }
             }, (error: GeolocationPositionError) => {
                 reject(error);
             });

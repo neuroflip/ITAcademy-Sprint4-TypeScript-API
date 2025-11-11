@@ -23,9 +23,13 @@ class ICanHazDadJokesApi extends FetchDataProvider implements ICanHazDadJokesApi
     }
 
     async getData() {
+      try {
         const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint, jsonConfiguration.headers)
 
         return this.normalizeData(jokeData.joke);
+      } catch(error) {
+        throw new Error('ICanHazDadJokesApi cannot be accessed.')
+      }
     }
 
     fetch<ResponseData> (endpoint: string, headers: ApiHeader) {

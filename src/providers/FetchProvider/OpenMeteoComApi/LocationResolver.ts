@@ -1,6 +1,7 @@
 import type { Location } from './LocationResolver.d';
 
-const getLocation = (locationResolved: (location: Location) => void, locationNotResolved: (error: GeolocationPositionError) => void) => {
+const getLocation = (locationResolved: (location: Location) => void, 
+  locationNotResolved: (error: GeolocationPositionError) => void) => {
   if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
           const newLocation: Location = {

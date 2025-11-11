@@ -37,7 +37,7 @@ describe('WeatherManger', () => {
         vi.clearAllMocks();
     });
 
-    it('creates the apiManager, adds a weather provider and gets the geather data', async () => {
+    it('creates the apiManager, adds a weather provider and gets the weather data', async () => {
         new WeatherManager();
 
         await Promise.resolve();
@@ -54,7 +54,7 @@ describe('WeatherManger', () => {
         expect(setError).toHaveBeenCalledWith('')
     });
 
-    it('gets the geather data on constructor but the api rejects', async () => {
+    it('gets the weather data on constructor but the api rejects', async () => {
         new WeatherManager();
 
         await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
@@ -62,6 +62,6 @@ describe('WeatherManger', () => {
         expect(setUILoadingAndWeatherText).toHaveBeenCalledTimes(2);
         expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '', '');
         expect(setUILoadingAndWeatherText).toHaveBeenCalledWith(true, '','');
-        expect(setError).toHaveBeenCalledWith('‼️ Please review your location privacy settings and weather api service status')
+        expect(setError).toHaveBeenCalledWith('‼️ Please review your location privacy settings and the weather api service status.')
     });
 });
