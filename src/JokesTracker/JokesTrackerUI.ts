@@ -18,4 +18,4 @@ const prepareJokeRatingInteraction = (callback: (value: number) => void) => {
   });
 }
 
-export { prepareJokeRatingInteraction }
+export { prepareJokeRatingInteraction ,FUNNY, NOTFUNNY, NORMAL }
