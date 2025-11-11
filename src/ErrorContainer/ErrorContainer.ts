@@ -5,7 +5,9 @@ const setError = (text: string) => {
     const errorContainer = document.querySelector('.errorContainer');
 
     if(errorContainer) {
-        errorContainer.classList.contains('hidden') && errorContainer.classList.remove('hidden');
+        if (errorContainer.classList.contains('hidden')) {
+            errorContainer.classList.remove('hidden');
+        }
         errorContainer.textContent += `‼️ ${text}\r\n`;
     }
 }

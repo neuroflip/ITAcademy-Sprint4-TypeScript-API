@@ -26,9 +26,7 @@ describe('', () => {
   it('toggles the spinner status (setUILoadingAndWeatherText)', () => {
     const spinner = globalThis.document.getElementById('spinner');
 
-    console.log(spinner && spinner.className)
     toggleSpinner();
-    console.log(spinner && spinner.className)
     expect(spinner && spinner.className.indexOf('hidden') < 0).toBeTruthy();
 
 

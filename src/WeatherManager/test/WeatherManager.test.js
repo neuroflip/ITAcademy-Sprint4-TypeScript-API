@@ -64,6 +64,7 @@ describe('WeatherManger', () => {
         expect(setWeatherTexts).toHaveBeenCalledTimes(2);
         expect(setWeatherTexts).toHaveBeenCalledWith('', '');
         expect(setWeatherTexts).toHaveBeenCalledWith('11°C','12Km/h');
+        expect(toggleSpinner).toHaveBeenCalledTimes(2);
         expect(setError).not.toHaveBeenCalledWith('')
     });
 
@@ -76,6 +77,7 @@ describe('WeatherManger', () => {
         expect(setWeatherTexts).toHaveBeenCalledTimes(2);
         expect(setWeatherTexts).toHaveBeenCalledWith('', '');
         expect(setWeatherTexts).toHaveBeenCalledWith('','');
+                expect(toggleSpinner).toHaveBeenCalledTimes(2);
         expect(setError).toHaveBeenCalledWith('Please review your location privacy settings and the weather api service status.')
     });
 });
