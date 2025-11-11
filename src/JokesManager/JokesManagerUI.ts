@@ -5,14 +5,18 @@ const prepareNextJokeButtonInteraction = (callback: () => void) => {
   button?.addEventListener('click', callback.bind(this));
 }
 
-const setUILoadingAndJokesText = (joke: string) => {
+const setJokesText = (joke: string) => {
     const jokeContainer = document.querySelector('.joke');
-    const spinner = document.querySelector('.jokesContainer .spinner');
 
     if(jokeContainer) {
       jokeContainer.textContent = joke.length > 0 ? `"${joke}"` : '';
     }
+}
+
+const toggleSpinner = () => {
+    const spinner = document.querySelector('.jokesContainer .spinner');
+
     spinner?.classList.toggle('hidden');
 }
 
-export { prepareNextJokeButtonInteraction, setUILoadingAndJokesText };
+export { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner };

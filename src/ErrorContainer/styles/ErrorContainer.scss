@@ -1,0 +1,12 @@
+@use '../../styles/variables' as global;
+
+.errorContainer {
+    width: 70%;
+    margin: auto;
+    padding: 2rem;
+    background-color: coral;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: global.$shadow;
+    white-space: pre-line;
+}

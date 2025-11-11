@@ -1,6 +1,6 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import WeatherManager from '../WeatherManager'
-import { setError, setUILoadingAndWeatherText } from '../WeatherManagerUI';
+import { setError, setWeatherTexts } from '../WeatherManagerUI';
 
 const ApiManagerMock = { 
     addJokesProviders: vi.fn(),
@@ -48,9 +48,9 @@ describe('WeatherManger', () => {
         ]);
         expect(await ApiManagerMock.getCurrentWeather).toHaveBeenCalledTimes(1);
 
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('', '');
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('11°C','12Km/h');
+        expect(setWeatherTexts).toHaveBeenCalledTimes(2);
+        expect(setWeatherTexts).toHaveBeenCalledWith('', '');
+        expect(setWeatherTexts).toHaveBeenCalledWith('11°C','12Km/h');
         expect(setError).toHaveBeenCalledWith('')
     });
 
@@ -59,9 +59,9 @@ describe('WeatherManger', () => {
 
         await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
 
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('', '');
-        expect(setUILoadingAndWeatherText).toHaveBeenCalledWith('','');
+        expect(setWeatherTexts).toHaveBeenCalledTimes(2);
+        expect(setWeatherTexts).toHaveBeenCalledWith('', '');
+        expect(setWeatherTexts).toHaveBeenCalledWith('','');
         expect(setError).toHaveBeenCalledWith('‼️ Please review your location privacy settings and the weather api service status.')
     });
 });

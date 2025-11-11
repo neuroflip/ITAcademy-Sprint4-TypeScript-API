@@ -5,31 +5,42 @@ import type JokesManagerInterface from './JokesManager.d';
 import type { ApiManagerInterface } from "../ApiManager/ApiManager.d";
 import type { NormalizedData } from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi";
 
+import { setError, clearError } from '../ErrorContainer/ErrorContainer';
 import ApiManager from "../ApiManager/ApiManager";
 import ChuckNorrisJokesApi from "../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi";
 import ICanHazDadJokesApi from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokesApi";
 import JokesTracker from "../JokesTracker/JokesTracker";
-import { prepareNextJokeButtonInteraction, setUILoadingAndJokesText } from './JokesManagerUI';
+import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from './JokesManagerUI';
 
 class JokesManager implements JokesManagerInterface {
   private apiManager: ApiManagerInterface<ICanHazDadJokesApi | ChuckNorrisJokesApi>;
   private jokesTracker: JokesTracker;
 
   constructor() {
+    const buttonClickEventHandler = () => {
+      clearError();
+      this.getNewJoke()
+    };
+
     this.apiManager = new ApiManager();
     this.jokesTracker = new JokesTracker();
     this.apiManager.addJokesProviders([new ICanHazDadJokesApi(), new ChuckNorrisJokesApi()]);
-    prepareNextJokeButtonInteraction(this.getNewJoke.bind(this));
+    prepareNextJokeButtonInteraction(buttonClickEventHandler.bind(this));
   }
 
   getNewJoke() {
     const jokeData = this.apiManager.getRandomJoke();
-    setUILoadingAndJokesText('');
+    
+    setJokesText('');
+    toggleSpinner();
     jokeData.then((jokeData: NormalizedData) => {
       this.jokesTracker.setCurrentJoke(jokeData);
-      setUILoadingAndJokesText(jokeData.joke);
+      toggleSpinner();
+      setJokesText(jokeData.joke);
     }).catch(() => {
-      setUILoadingAndJokesText('An error has occurred, please try again');
+      toggleSpinner();
+      setJokesText('');
+      setError('An error has occurred, please try again');
     });
   }
 }

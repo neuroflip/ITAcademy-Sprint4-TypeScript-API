@@ -39,7 +39,7 @@ vi.mock('../../JokesTracker/JokesTracker', () => {
   };
 });
 
-import { prepareNextJokeButtonInteraction, setUILoadingAndJokesText } from '../JokesManagerUI';
+import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from '../JokesManagerUI';
 
 vi.mock('../JokesManagerUI', () => ({
   prepareNextJokeButtonInteraction: vi.fn(),
@@ -69,14 +69,15 @@ describe('JokesManager', () => {
         jokesManager.getNewJoke();
 
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
-        expect(setUILoadingAndJokesText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('');
+        expect(setJokesText).toHaveBeenCalledTimes(2);
+        expect(toggleSpinner).toHaveBeenCalledTimes(2);
+        expect(setJokesText).toHaveBeenCalledWith('');
+        expect(setJokesText).toHaveBeenCalledWith('joke');
         expect(jokesTrackerMock.setCurrentJoke).toHaveBeenCalledWith({ 
             joke: 'joke',
             score: 100,
             date: "Date ISOString"
         });
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('joke');
     });
 
     it('Sets the error in UI when the getRandomJoke fails', async () => {
