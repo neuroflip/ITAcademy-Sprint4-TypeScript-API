@@ -1,5 +1,6 @@
 @media screen and (width < 38em) {
-  .weatherContainer {
+  body .weatherContainer {
     justify-content: center;
+    width: auto;
   }
 }

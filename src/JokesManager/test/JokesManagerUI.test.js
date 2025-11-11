@@ -1,5 +1,5 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { prepareNextJokeButtonInteraction, setUILoadingAndJokesText } from '../JokesManagerUI'
+import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from '../JokesManagerUI'
 
 const callback = vi.fn();
 
@@ -13,6 +13,7 @@ describe('', () => {
         <title>FizzBuzz DOM</title>
       </head>
       <body>
+        <div class="errorContainer hidden"></div>
         <main class="jokesContainer">
           <h1>Ready to laugh?</h1>
           <p class="joke">
@@ -51,27 +52,27 @@ describe('', () => {
   it('toggles the spinner status (prepareNextJokeButtonInteraction)', () => {
     const spinner = globalThis.document.querySelector('.spinner');
 
-    setUILoadingAndJokesText('');
+    toggleSpinner();
     expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
 
-    setUILoadingAndJokesText('');
+    toggleSpinner();
     expect(spinner.className.indexOf('hidden') < 0).toBeFalsy();
 
-    setUILoadingAndJokesText('');
+    toggleSpinner();
     expect(spinner.className.indexOf('hidden') < 0).toBeTruthy();
   });
 
   it('clears the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
     const jokeContainer = globalThis.document.querySelector('.joke');
 
-    setUILoadingAndJokesText('');
+    setJokesText('');
     expect(jokeContainer.textContent).toEqual('');
   });
 
   it('sets the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
     const jokeContainer = globalThis.document.querySelector('.joke');
 
-    setUILoadingAndJokesText('This is a new joke');
+    setJokesText('This is a new joke');
     expect(jokeContainer.textContent).toEqual('"This is a new joke"');
   });
 });

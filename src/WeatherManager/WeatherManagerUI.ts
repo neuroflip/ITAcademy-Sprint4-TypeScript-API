@@ -1,24 +1,19 @@
-const setUILoadingAndWeatherText = (temperature: string, wind: string) => {
-    const weahterTemp = document.querySelector('.weather--temperature');
-    const weahterWind = document.querySelector('.weather--windSpeed');
-    const spinner = document.querySelector('.weatherContainer .spinner');
+const setWeatherTexts = (temperature: string, wind: string) => {
+  const weahterTemp = document.querySelector('.weather--temperature');
+  const weahterWind = document.querySelector('.weather--windSpeed');
 
-    if(weahterTemp) {
-      weahterTemp.textContent = temperature;
-    }
-    if(weahterWind) {
-      weahterWind.textContent = wind;
-    }
-    spinner?.classList.toggle('hidden');
+  if(weahterTemp) {
+    weahterTemp.textContent = temperature;
   }
-
-const setError = (errorMessage: string) => {
-    const errorContainer = document.querySelector('.error');
-
-    if (errorContainer) {
-      errorContainer.textContent = errorMessage;
-    }
+  if(weahterWind) {
+    weahterWind.textContent = wind;
   }
+}
 
+const toggleSpinner = () => {
+  const spinner = document.querySelector('.weatherContainer .spinner');
 
-  export { setError, setUILoadingAndWeatherText };
+  spinner?.classList.toggle('hidden');
+}
+
+export { setWeatherTexts, toggleSpinner };

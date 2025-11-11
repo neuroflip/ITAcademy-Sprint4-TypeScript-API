@@ -6,9 +6,10 @@ import type { ApiManagerInterface } from "../ApiManager/ApiManager.d";
 import type { ResponseData } from "../providers/FetchDataProvider.d";
 import type OpenMeteoComApiInterface from "../providers/FetchProvider/OpenMeteoComApi/OpenMeteoComApi";
 
+import { setError } from '../ErrorContainer/ErrorContainer';
 import ApiManager from "../ApiManager/ApiManager";
 import OpenMeteoComApi from "../providers/FetchProvider/OpenMeteoComApi/OpenMeteoComApi";
-import { setError, setUILoadingAndWeatherText } from './WeatherManagerUI';
+import { setWeatherTexts, toggleSpinner } from './WeatherManagerUI';
 
 class WeatherManager implements WeatherManagerInterface {
   private apiManager: ApiManagerInterface<OpenMeteoComApiInterface>;
@@ -16,20 +17,21 @@ class WeatherManager implements WeatherManagerInterface {
   constructor() {
     this.apiManager = new ApiManager();
     this.apiManager.addWeatherProviders([new OpenMeteoComApi()]);
-    this.getWheatherData();
   }
 
   getWheatherData() {
     const weatherData = this.apiManager.getCurrentWeather();
-    setUILoadingAndWeatherText('', '');
+    setWeatherTexts('', '');
+    toggleSpinner();
     weatherData.then((weatherData: ResponseData) => {
       const currentWeather: ResponseData = weatherData.current_weather as ResponseData;
 
-      setUILoadingAndWeatherText(`${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
-      setError('');
+      toggleSpinner();
+      setWeatherTexts(`${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
     }).catch(() => {
-      setUILoadingAndWeatherText('', '');
-      setError('‼️ Please review your location privacy settings and the weather api service status.');
+      toggleSpinner();
+      setWeatherTexts('', '');
+      setError('Please review your location privacy settings and the weather api service status.');
     });
   }
 }

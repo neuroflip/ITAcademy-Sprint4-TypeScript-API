@@ -1,5 +1,7 @@
+@use './variables' as global;
+
 :root {
-    font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: global.$font-family;
     line-height: 1.5;
     font-weight: 400;
     width: 100%;
