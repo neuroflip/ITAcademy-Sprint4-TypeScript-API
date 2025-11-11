@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { setError } from '../../ErrorContainer/ErrorContainer';
 import { setWeatherTexts, toggleSpinner } from '../WeatherManagerUI';
 
 describe('', () => {
@@ -27,8 +26,11 @@ describe('', () => {
   it('toggles the spinner status (setUILoadingAndWeatherText)', () => {
     const spinner = globalThis.document.getElementById('spinner');
 
+    console.log(spinner && spinner.className)
     toggleSpinner();
+    console.log(spinner && spinner.className)
     expect(spinner && spinner.className.indexOf('hidden') < 0).toBeTruthy();
+
 
     toggleSpinner();
     expect(spinner && spinner.className.indexOf('hidden') < 0).toBeFalsy();
@@ -49,12 +51,5 @@ describe('', () => {
 
     setWeatherTexts('', 'Wind speed');
     expect(windContainer && windContainer.textContent).toEqual('Wind speed');
-  });
-
-  it('sets the error message (setError)', () => {
-    const errorContainer = globalThis.document.querySelector('.error');
-
-    setError('This is a new error');
-    expect(errorContainer && errorContainer.textContent).toEqual('This is a new error');
   });
 });

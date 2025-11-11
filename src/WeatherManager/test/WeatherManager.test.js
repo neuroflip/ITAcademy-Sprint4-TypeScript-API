@@ -1,6 +1,8 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import WeatherManager from '../WeatherManager'
-import { setError, setWeatherTexts } from '../WeatherManagerUI';
+import { setWeatherTexts, toggleSpinner } from '../WeatherManagerUI';
+import { setError } from '../../ErrorContainer/ErrorContainer'; 
+
 
 const ApiManagerMock = { 
     addJokesProviders: vi.fn(),
@@ -28,8 +30,12 @@ vi.mock('../../providers/FetchProvider/OpenMeteoComApi/OpenMeteoComApi', () => (
 }));
 
 vi.mock('../WeatherManagerUI', () => ({
-  setError: vi.fn(),
-  setUILoadingAndWeatherText: vi.fn()
+  setWeatherTexts: vi.fn(),
+  toggleSpinner: vi.fn()
+}));
+
+vi.mock('../../ErrorContainer/ErrorContainer', () => ({
+  setError: vi.fn()
 }));
 
 describe('WeatherManger', () => {
@@ -37,7 +43,7 @@ describe('WeatherManger', () => {
         vi.clearAllMocks();
     });
 
-    it('creates the apiManager, adds a weather provider and gets the weather data', async () => {
+    it('creates the apiManager, adds a weather provider', async () => {
         new WeatherManager();
 
         await Promise.resolve();
@@ -46,22 +52,30 @@ describe('WeatherManger', () => {
         expect(ApiManagerMock.addWeatherProviders).toHaveBeenCalledWith([
             expect.any(OpenMeteoComApi)
         ]);
-        expect(await ApiManagerMock.getCurrentWeather).toHaveBeenCalledTimes(1);
+        expect(ApiManagerMock.getCurrentWeather).not.toHaveBeenCalledTimes(1);
+    });
+
+    it('gets the weather data', async () => {
+        const weatherManager = new WeatherManager();
+
+        weatherManager.getWheatherData();
+        await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
 
         expect(setWeatherTexts).toHaveBeenCalledTimes(2);
         expect(setWeatherTexts).toHaveBeenCalledWith('', '');
         expect(setWeatherTexts).toHaveBeenCalledWith('11°C','12Km/h');
-        expect(setError).toHaveBeenCalledWith('')
+        expect(setError).not.toHaveBeenCalledWith('')
     });
 
-    it('gets the weather data on constructor but the api rejects', async () => {
-        new WeatherManager();
+    it('gets the weather data but the api rejects', async () => {
+        const weatherManager = new WeatherManager();
 
+        weatherManager.getWheatherData();
         await ApiManagerMock.getCurrentWeather.mock.results[0].value.catch(() => {});
 
         expect(setWeatherTexts).toHaveBeenCalledTimes(2);
         expect(setWeatherTexts).toHaveBeenCalledWith('', '');
         expect(setWeatherTexts).toHaveBeenCalledWith('','');
-        expect(setError).toHaveBeenCalledWith('‼️ Please review your location privacy settings and the weather api service status.')
+        expect(setError).toHaveBeenCalledWith('Please review your location privacy settings and the weather api service status.')
     });
 });

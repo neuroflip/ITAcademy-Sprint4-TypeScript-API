@@ -40,10 +40,15 @@ vi.mock('../../JokesTracker/JokesTracker', () => {
 });
 
 import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from '../JokesManagerUI';
-
 vi.mock('../JokesManagerUI', () => ({
   prepareNextJokeButtonInteraction: vi.fn(),
-  setUILoadingAndJokesText: vi.fn()
+  setJokesText: vi.fn(),
+  toggleSpinner: vi.fn()
+}));
+
+import { setError } from '../../ErrorContainer/ErrorContainer';
+vi.mock('../../ErrorContainer/ErrorContainer', () => ({
+  setError: vi.fn()
 }));
 
 describe('JokesManager', () => {
@@ -59,6 +64,7 @@ describe('JokesManager', () => {
             expect.any(ICanHazDadJokesApi),
             expect.any(ChuckNorrisJokesApi)
         ]);
+        expect(ApiManagerMock.getRandomJoke).not.toHaveBeenCalledTimes(1);
         expect(prepareNextJokeButtonInteraction).toHaveBeenCalledTimes(1);
         expect(prepareNextJokeButtonInteraction).toHaveBeenCalledWith(expect.any(Function));
     });
@@ -88,8 +94,8 @@ describe('JokesManager', () => {
         await Promise.resolve();
 
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
-        expect(setUILoadingAndJokesText).toHaveBeenCalledTimes(2);
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('');
-        expect(setUILoadingAndJokesText).toHaveBeenCalledWith('An error has occurred, please try again');
+        expect(setJokesText).toHaveBeenCalledTimes(2);
+        expect(setJokesText).toHaveBeenCalledWith('');
+        expect(setError).toHaveBeenCalledWith('An error has occurred, please try again');
     });
 });

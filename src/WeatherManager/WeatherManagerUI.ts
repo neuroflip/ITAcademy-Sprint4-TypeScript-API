@@ -11,9 +11,8 @@ const setWeatherTexts = (temperature: string, wind: string) => {
 }
 
 const toggleSpinner = () => {
-  const spinner = document.querySelector('.jokesContainer .spinner');
+  const spinner = document.querySelector('.weatherContainer .spinner');
 
-  console.log(spinner?.classList);
   spinner?.classList.toggle('hidden');
 }
 
