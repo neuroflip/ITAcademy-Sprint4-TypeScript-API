@@ -46,7 +46,7 @@ describe('ICanHazDadJokesApi', () => {
     });
 
     it('returns the normalized api result when getData is successful', async () => {
-        const { fetchMock } = vi.mocked(await import('../../../FetchDataProvider'));
+        vi.mocked(await import('../../../FetchDataProvider'));
         const api = new ICanHazDadJokesApi();
 
         const data = await api.getData();

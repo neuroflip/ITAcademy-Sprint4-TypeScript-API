@@ -29,6 +29,7 @@ class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterf
                         jsonConfiguration.headers,
                         jsonConfiguration.params);
                     resolve(weatherData)
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 } catch(error) {
                       reject(new Error('OpenMeteoComAPI cannot be accessed.'));
                 }

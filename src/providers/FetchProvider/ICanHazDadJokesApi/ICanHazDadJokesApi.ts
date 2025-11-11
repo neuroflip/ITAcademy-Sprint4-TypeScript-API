@@ -27,6 +27,7 @@ class ICanHazDadJokesApi extends FetchDataProvider implements ICanHazDadJokesApi
         const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint, jsonConfiguration.headers)
 
         return this.normalizeData(jokeData.joke);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch(error) {
         throw new Error('ICanHazDadJokesApi cannot be accessed.')
       }

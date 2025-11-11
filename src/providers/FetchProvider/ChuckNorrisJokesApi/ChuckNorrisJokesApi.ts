@@ -27,6 +27,7 @@ class ChuckNorrisJokesApi extends FetchDataProvider implements ChuckNorrisJokesA
         const jokeData = await this.fetch<ResponseData>(jsonConfiguration.endpoint);
 
         return this.normalizeData(jokeData.value);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch(error) {
         throw new Error('ChuckNorrisJokesApi cannot be accessed.')
       }

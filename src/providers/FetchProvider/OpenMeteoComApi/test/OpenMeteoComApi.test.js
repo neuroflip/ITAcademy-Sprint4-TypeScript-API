@@ -49,19 +49,19 @@ vi.mock('../../../FetchDataProvider', () => {
 
 vi.mock('../LocationResolver', () => ({
   getLocation: vi.fn()
-  .mockImplementationOnce((locationResolved, locationNotResolved) => {
+  .mockImplementationOnce((locationResolved) => {
     locationResolved({
       latitude: 10.232,
       longitude: 300.123
     });
   })
-  .mockImplementationOnce((locationResolved, locationNotResolved) => {
+  .mockImplementationOnce((locationResolved) => {
     locationResolved({
       latitude: 10.232,
       longitude: 300.123
     });
   })
-  .mockImplementationOnce((locationResolved, locationNotResolved) => {
+  .mockImplementationOnce((locationResolved) => {
     locationResolved({
       latitude: 10.232,
       longitude: 300.123
@@ -96,7 +96,7 @@ describe('OpenMeteoComApi', () => {
     });
 
     it('returns the api result when getData is successful when Location is resoved', async () => {
-        const { fetchMock } = vi.mocked(await import('../../../FetchDataProvider'));
+        vi.mocked(await import('../../../FetchDataProvider'));
         const api = new OpenMeteoComApi();
 
         const data = await api.getData();
@@ -123,7 +123,7 @@ describe('OpenMeteoComApi', () => {
     });
 
     it('calls getData and returns an error when Location is NOT resoved', async () => {
-        const { fetchMock } = vi.mocked(await import('../../../FetchDataProvider'));
+        vi.mocked(await import('../../../FetchDataProvider'));
         const api = new OpenMeteoComApi();
 
         await expect(() => api.getData()).rejects.toThrowError('Location cannot be resolved');

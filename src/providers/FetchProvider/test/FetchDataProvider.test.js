@@ -20,15 +20,7 @@ const mockResponse = {
   "val3": "value3"
 };
 
-global.fetch = vi.fn(() => {
-  return Promise.resolve({
-    "ok": true,
-    json: () => Promise.resolve(mockResponse),
-  })
-  }
-);
-
-global.fetch = vi.fn().mockImplementationOnce(() => {
+globalThis.fetch = vi.fn().mockImplementationOnce(() => {
   return Promise.resolve({
     "ok": true,
     json: () => Promise.resolve(mockResponse),
@@ -53,10 +45,10 @@ describe('FetchDataProvider', () => {
 
       fetchProvider.fetch(callParameters.endpoint);
 
-      expect(fetch).toHaveBeenCalledWith(callParameters.endpoint + '?', {
+      expect(globalThis.fetch).toHaveBeenCalledWith(callParameters.endpoint + '?', {
         "method": "GET",
         "headers": {
-          "User-Agent": navigator.userAgent
+          "User-Agent": globalThis.navigator.userAgent
        }
       })
     });
@@ -66,11 +58,11 @@ describe('FetchDataProvider', () => {
 
       fetchProvider.fetch(callParameters.endpoint, callParameters.headers);
 
-      expect(fetch).toHaveBeenCalledWith(callParameters.endpoint + '?', {
+      expect(globalThis.fetch).toHaveBeenCalledWith(callParameters.endpoint + '?', {
         "method": "GET",
         "headers": {
           ...callParameters.headers,
-          "User-Agent": navigator.userAgent,
+          "User-Agent": globalThis.navigator.userAgent,
        }
       })
     });
