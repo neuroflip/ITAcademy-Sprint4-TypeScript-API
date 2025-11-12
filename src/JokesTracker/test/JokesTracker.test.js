@@ -13,7 +13,7 @@ describe('JokesTracker', () => {
         vi.clearAllMocks();
     });
 
-    it('calls to prepareJokeRatingInteraction to set handles for punctuation buttons', () => {
+    it('calls to prepareJokeRatingInteraction to set handles for scores buttons', () => {
         new JokesTracker();
 
         expect(prepareJokeRatingInteraction).toHaveBeenCalledTimes(1);

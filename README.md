@@ -4,7 +4,7 @@
 
 This repo contains the solution for the ITAcademy Sprint 4 (Jokes and weather apis using typescript).
 
-![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API/blob/main/etc/live.jpg)
+![alt basic screenshot from the project](https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API/blob/main/etc/screenshot.png)
 
 Take a look to the live demo at: [https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/](https://neuroflip.github.io/ITAcademy-Sprint4-TypeScript-API/)
 <br>
@@ -47,10 +47,10 @@ The code architecture is organized in modules. A module directory incapsulates a
 | -- /assets/images/ | All the static assets. Only images by now |
 | -- <b>/ApiManager/</b> | An ApiManager to manage all the api access |
 | ---- /test/ | Tests for the ApiManager module |
-| -- <b>/JokesManager/</b> | A JokesManager to manage together the jokes api access and the tracking data for the jokes punctuation |
+| -- <b>/JokesManager/</b> | A JokesManager to manage together the jokes api access and the tracking data for the jokes scores |
 | ---- /styles/ | scss for the JokesManager |
 | ---- /test/ | Tests for the JokesManager module |
-| -- <b>/JokesTracker/</b> | A JokesTracker to manage the process to tracking of the jokes punctuation process |
+| -- <b>/JokesTracker/</b> | A JokesTracker to manage the process to tracking of the jokes scores process |
 | ---- /styles/ | scss for the JockesTracker |
 | ---- /test/ | Tests for the JokesTracker module |
 | -- <b>/WeatherManager/</b> | A WeatherManager to manage all the weather api access to retrieve and show the weather data |
@@ -68,6 +68,16 @@ The code architecture is organized in modules. A module directory incapsulates a
 
 <br>
 
+## OO Model
+
+This is the classes model of the project:
+
+![alt object model](https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API/blob/main/etc/ObjectModel.png)
+
+The FetchDataProvider implements the basic fetch functionality and using inheritance the api providers are implemented. This way is easy to implement any api provider.
+
+The ApiManager gets the api providers needed using dependency injection at creation time.
+
 ## Considerations
 
  - The main managers (jokes and weather) have a spinner to indicate the loading status to the user
@@ -82,7 +92,6 @@ The project is managing a CI process using test execution and eslint execution u
 ![alt ci pipeline execution result in a correct PR](https://github.com/neuroflip/ITAcademy-Sprint4-TypeScript-API/blob/main/etc/ci.png)
 
 ## Testing
-The tests are implemented using vitest.
-[... more to come]
+The tests are implemented using vitest and javascript (not using typescript by now). The tests are included inside the class directory they are testing. This way all the classes are self contained (code, styles, tests, type definition).
 
 <br />

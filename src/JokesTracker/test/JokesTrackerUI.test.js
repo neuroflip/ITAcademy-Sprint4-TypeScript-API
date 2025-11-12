@@ -21,7 +21,7 @@ describe('JokesTrackerUI', () => {
       </body>
       </html>`;
   });
-    it('prepares the event handling on punctuation buttons', () => {
+    it('prepares the event handling on scores buttons', () => {
       const button1 = globalThis.document.getElementById('plus1button');
       const button2 = globalThis.document.getElementById('plus2button');
       const button3 = globalThis.document.getElementById('plus3button');
@@ -36,7 +36,7 @@ describe('JokesTrackerUI', () => {
       expect(button3.addEventListener).toHaveBeenCalledWith('click', expect.any(Function));
     });
 
-    it('calls to the click callback clicking on punctuation buttons', () => {
+    it('calls to the click callback clicking on scores buttons', () => {
       const button1 = globalThis.document.getElementById('plus1button');
       const button2 = globalThis.document.getElementById('plus2button');
       const button3 = globalThis.document.getElementById('plus3button');
