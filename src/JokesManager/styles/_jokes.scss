@@ -1,4 +1,5 @@
 @use "./jokes.s";
+@use "../../styles/variables" as global;
 
 .jokesContainer {
   width: 100vw;
@@ -24,6 +25,10 @@
   button {
     align-self: center;
     padding: 1.5rem;
+  }
+
+  #jokesButton {
+    box-shadow: global.$shadow;
   }
 
   .spinner {
