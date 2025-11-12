@@ -63,7 +63,7 @@ describe('WeatherManger', () => {
 
         expect(setWeatherTexts).toHaveBeenCalledTimes(2);
         expect(setWeatherTexts).toHaveBeenCalledWith('', '');
-        expect(setWeatherTexts).toHaveBeenCalledWith('11°C','12Km/h');
+        expect(setWeatherTexts).toHaveBeenCalledWith('11','12');
         expect(toggleSpinner).toHaveBeenCalledTimes(2);
         expect(setError).not.toHaveBeenCalledWith('')
     });

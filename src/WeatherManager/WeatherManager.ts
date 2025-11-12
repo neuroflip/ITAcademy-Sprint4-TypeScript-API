@@ -27,7 +27,7 @@ class WeatherManager implements WeatherManagerInterface {
       const currentWeather: ResponseData = weatherData.current_weather as ResponseData;
 
       toggleSpinner();
-      setWeatherTexts(`${String(currentWeather.temperature)}°C`,`${String(currentWeather.windspeed)}Km/h`);
+      setWeatherTexts(String(currentWeather.temperature),String(currentWeather.windspeed));
     }).catch(() => {
       toggleSpinner();
       setWeatherTexts('', '');

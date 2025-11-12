@@ -15,6 +15,17 @@
   }
 }
 
+.weatherContainer__icon {
+  font-size: 1.5rem;
+  align-self: center;
+  margin-left: 1rem;
+}
+
+.weatherContainer__icon--weather {
+  font-size: 1.5rem;
+  align-self: center;
+}
+
 .weatherContainer__temperature {
   font-size: 1.5rem;
   margin-right: 2rem;

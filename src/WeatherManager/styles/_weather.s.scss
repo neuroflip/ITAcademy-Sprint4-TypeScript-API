@@ -2,5 +2,9 @@
   body .weatherContainer {
     justify-content: center;
     width: auto;
+
+   .weatherContainer__icon {
+    margin-left: 0;
+}
   }
 }

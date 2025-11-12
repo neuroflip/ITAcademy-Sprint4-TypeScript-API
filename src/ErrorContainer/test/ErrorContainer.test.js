@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setError, clearError } from '../ErrorContainer'
-import { error } from 'console';
 
 describe('ErrorContainer', () => {
     beforeEach(() => {
