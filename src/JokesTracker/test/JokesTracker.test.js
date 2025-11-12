@@ -3,10 +3,12 @@ import JokesTracker from '../JokesTracker';
 import { prepareJokeRatingInteraction } from '../JokesTrackerUI';
 
 vi.mock('../JokesTrackerUI', () => ({
-  prepareJokeRatingInteraction: vi.fn()
+  prepareJokeRatingInteraction: vi.fn(),
+  clearButtonsClasses: vi.fn()
 }));
 
 vi.spyOn(Date.prototype, 'toISOString').mockReturnValue('date iso string'); 
+const consolelog = vi.spyOn(globalThis.console, 'log').mockImplementation(() => undefined);
 
 describe('JokesTracker', () => {
     beforeEach(() => {
@@ -45,6 +47,10 @@ describe('JokesTracker', () => {
         "score": 1000,
         "date": 'date iso string'
       }])
+      expect(consolelog).toHaveBeenCalledTimes(2);
+      expect(consolelog).toHaveBeenCalledWith(`%c -----> Report Jokes <--------------------`, 'background-color: Red; color: white;');
+      // eslint-disable-next-line no-useless-escape
+      expect(consolelog).toHaveBeenCalledWith(`%cJoke: \"this is a joke\"\nScore: 1000\nDate: date iso string`, 'background-color: black; color: white;');
     });
 
     describe('JokesTracker setCurrentJoke', () => {

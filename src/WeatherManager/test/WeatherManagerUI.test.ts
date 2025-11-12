@@ -13,10 +13,10 @@ describe('', () => {
       <body>
         <div class="errorContainer hidden"></div>
         <div class="weatherContainer">
-          <img class="wehater--image" src="./src/assets/images/temperature.png" alt="thermometer" />
-          <div class="weather--temperature"></div>
+          <img class="weatherContainer__image" src="./src/assets/images/temperature.png" alt="thermometer" />
+          <div class="weatherContainer__temperature"></div>
           <img class="inlineImage" src="./src/assets/images/wind.png" alt="wind speed" />
-          <div class="weather--windSpeed"></div>
+          <div class="weatherContainer__windSpeed"></div>
           <div id="spinner" class="spinner hidden"><div></div><div></div><div></div><div></div></div>
         </div>
       </body>
@@ -38,14 +38,14 @@ describe('', () => {
   });
 
   it('sets the temperature text (prepareNextJokeButtonInteraction)', () => {
-    const temperatureContainer = globalThis.document.querySelector('.weather--temperature');
+    const temperatureContainer = globalThis.document.querySelector('.weatherContainer__temperature');
 
     setWeatherTexts('Temperature', '');
     expect(temperatureContainer && temperatureContainer.textContent).toEqual('Temperature');      
   });
 
   it('sets the windspeed text (prepareNextJokeButtonInteraction)', () => {
-    const windContainer = globalThis.document.querySelector('.weather--windSpeed');
+    const windContainer = globalThis.document.querySelector('.weatherContainer__windSpeed');
 
     setWeatherTexts('', 'Wind speed');
     expect(windContainer && windContainer.textContent).toEqual('Wind speed');

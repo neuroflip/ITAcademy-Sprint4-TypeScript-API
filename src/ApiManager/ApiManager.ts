@@ -1,6 +1,9 @@
 import type { ApiManagerInterface, Providers } from './ApiManager.d';
-import FetchDataProviderInterface from '../providers/FetchDataProvider';
 import type { ResponseData } from '../providers/FetchDataProvider.d';
+
+import FetchDataProviderInterface from '../providers/FetchDataProvider';
+import { getRandomInt } from '../helpers/utils';
+
 
 class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<ResponseData> }> implements ApiManagerInterface<T>
 {
@@ -36,13 +39,6 @@ class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<Res
 
         return await this.providers.weatherProviders[providerIndex].getData();
     }
-}
-
-const getRandomInt = (min: number, max: number) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default ApiManager;

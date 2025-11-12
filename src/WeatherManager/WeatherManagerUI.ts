@@ -1,6 +1,6 @@
 const setWeatherTexts = (temperature: string, wind: string) => {
-  const weahterTemp = document.querySelector('.weather--temperature');
-  const weahterWind = document.querySelector('.weather--windSpeed');
+  const weahterTemp = document.querySelector('.weatherContainer__temperature');
+  const weahterWind = document.querySelector('.weatherContainer__windSpeed');
 
   if(weahterTemp) {
     weahterTemp.textContent = temperature;

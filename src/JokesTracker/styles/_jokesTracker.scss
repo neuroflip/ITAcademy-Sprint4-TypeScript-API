@@ -3,4 +3,8 @@
 .jokesTrackerContainer {
     margin: 0;
     margin: 1rem;
+
+    .selected {
+        transform: rotate(-15deg) scale(1.4);
+    }
 }

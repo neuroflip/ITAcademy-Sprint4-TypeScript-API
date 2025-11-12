@@ -9,24 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script defer type="module" src="/src/main.ts"></script>
   </head>
-  <body>
+  <body class="body__blobBackground">
     <div class="weatherContainer">
-      <img class="wehater--image" src="./src/assets/images/temperature.png" alt="thermometer" />
-      <div class="weather--temperature"></div>
-      <img class="inlineImage" src="./src/assets/images/wind.png" alt="wind speed" />
-      <div class="weather--windSpeed"></div>
+      <img class="weatherContainer__image" src="./src/assets/images/temperature.png" alt="thermometer" />
+      <div class="weatherContainer__temperature"></div>
+      <img class="weatherContainer__inlineImage" src="./src/assets/images/wind.png" alt="wind speed" />
+      <div class="weatherContainer__windSpeed"></div>
       <div class="spinner hidden"><div></div><div></div><div></div><div></div></div>
     </div>
     <div class="errorContainer hidden"></div>
     <main class="jokesContainer">
       <h1>Ready to laugh?</h1>
-      <p class="joke">
+      <p class="jokesContainer__joke">
       </p>
       <div class="spinner hidden"><div></div><div></div><div></div><div></div></div>
       <div class="jokesTrackerContainer">
-        <button id="plus1button" class="button plusButton">😔</button>
-        <button id="plus2button" class="button plusButton">😐</button>
-        <button id="plus3button" class="button plusButton">😂</button>
+        <button id="plus1button" class="jokesTrackerContainer__button--plus">😔</button>
+        <button id="plus2button" class="jokesTrackerContainer__button--plus">😐</button>
+        <button id="plus3button" class="jokesTrackerContainer__button--plus">😂</button>
       </div>
       <button id="jokesButton" class="button">Next Joke</button>
     </main>

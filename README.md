@@ -68,7 +68,7 @@ The code architecture is organized in modules. A module directory incapsulates a
 
 <br>
 
-## OO Model
+## Object Model
 
 This is the classes model of the project:
 

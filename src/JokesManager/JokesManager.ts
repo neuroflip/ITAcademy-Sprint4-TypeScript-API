@@ -10,7 +10,7 @@ import ApiManager from "../ApiManager/ApiManager";
 import ChuckNorrisJokesApi from "../providers/FetchProvider/ChuckNorrisJokesApi/ChuckNorrisJokesApi";
 import ICanHazDadJokesApi from "../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokesApi";
 import JokesTracker from "../JokesTracker/JokesTracker";
-import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from './JokesManagerUI';
+import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner, setRandomBackground } from './JokesManagerUI';
 
 class JokesManager implements JokesManagerInterface {
   private apiManager: ApiManagerInterface<ICanHazDadJokesApi | ChuckNorrisJokesApi>;
@@ -37,6 +37,7 @@ class JokesManager implements JokesManagerInterface {
       this.jokesTracker.setCurrentJoke(jokeData);
       toggleSpinner();
       setJokesText(jokeData.joke);
+      setRandomBackground();
     }).catch(() => {
       toggleSpinner();
       setJokesText('');

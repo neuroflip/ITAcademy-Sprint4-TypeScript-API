@@ -14,9 +14,9 @@ describe('JokesTrackerUI', () => {
       </head>
       <body>
         <div class="jokesTrackerContainer">
-          <button id="plus1button" class="button plusButton">😔</button>
-          <button id="plus2button" class="button plusButton">😐</button>
-          <button id="plus3button" class="button plusButton">😂</button>
+          <button id="plus1button" class="jokesTrackerContainer__button--plus">😔</button>
+          <button id="plus2button" class="jokesTrackerContainer__button--plus">😐</button>
+          <button id="plus3button" class="jokesTrackerContainer__button--plus">😂</button>
         </div>
       </body>
       </html>`;

@@ -3,7 +3,7 @@ import './styles/_jokesTracker.scss';
 
 import type { NormalizedData } from '../providers/FetchProvider/ICanHazDadJokesApi/ICanHazDadJokeApi';
 import type { JokesTrackerInterface, Report }  from './JokesTracker.d';
-import { prepareJokeRatingInteraction } from './JokesTrackerUI';
+import { prepareJokeRatingInteraction, clearButtonsClasses } from './JokesTrackerUI';
 
 class JokesTracker implements JokesTrackerInterface {
   private reportJokes: Array<Report>;
@@ -25,10 +25,21 @@ class JokesTracker implements JokesTrackerInterface {
       score: 0,
       date: new Date().toISOString()
     });
+
+    clearButtonsClasses();
   }
 
   getReportJokes() {
     return this.reportJokes;
+  }
+
+  private printRecordJokes() {
+    console.log(`%c -----> Report Jokes <--------------------`, 
+      'background-color: Red; color: white;');
+    this.reportJokes.map((joke: NormalizedData) => {
+      console.log(`%cJoke: "${joke.joke}"\nScore: ${joke.score}\nDate: ${joke.date}`, 
+      'background-color: black; color: white;');
+    });
   }
 
   private setValueToCurrentJoke(value: number) {
@@ -37,7 +48,8 @@ class JokesTracker implements JokesTrackerInterface {
     if (!currentJoke){
       throw new Error('Try to score the current joke when there is no current joke')
     } else {
-      currentJoke.score = value;  
+      currentJoke.score = value;
+      this.printRecordJokes();
     }
   }
 }

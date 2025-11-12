@@ -16,13 +16,13 @@ describe('', () => {
         <div class="errorContainer hidden"></div>
         <main class="jokesContainer">
           <h1>Ready to laugh?</h1>
-          <p class="joke">
+          <p class="jokesContainer__joke">
           </p>
           <div class="spinner hidden"><div></div><div></div><div></div><div></div></div>
           <div class="jokesTrackerContainer">this is a joke
-            <button id="plus1button" class="button plusButton">😔</button>
-            <button id="plus2button" class="button plusButton">😐</button>
-            <button id="plus3button" class="button plusButton">😂</button>
+            <button id="plus1button" class="jokesTrackerContainer__button--plus">😔</button>
+            <button id="plus2button" class="jokesTrackerContainer__button--plus">😐</button>
+            <button id="plus3button" class="jokesTrackerContainer__button--plus">😂</button>
           </div>
           <button id="jokesButton" class="button">Next Joke</button>
         </main>
@@ -63,14 +63,14 @@ describe('', () => {
   });
 
   it('clears the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
-    const jokeContainer = globalThis.document.querySelector('.joke');
+    const jokeContainer = globalThis.document.querySelector('.jokesContainer__joke');
 
     setJokesText('');
     expect(jokeContainer.textContent).toEqual('');
   });
 
   it('sets the joke text when indicated (prepareNextJokeButtonInteraction)', () => {
-    const jokeContainer = globalThis.document.querySelector('.joke');
+    const jokeContainer = globalThis.document.querySelector('.jokesContainer__joke');
 
     setJokesText('This is a new joke');
     expect(jokeContainer.textContent).toEqual('"This is a new joke"');
