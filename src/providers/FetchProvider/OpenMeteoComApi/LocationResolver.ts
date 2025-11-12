@@ -1,7 +1,7 @@
 import type { Location } from './LocationResolver.d';
 
 const getLocation = (locationResolved: (location: Location) => void, 
-  locationNotResolved: (error: GeolocationPositionError) => void) => {
+  locationNotResolved: (error: GeolocationPositionError | Error) => void) => {
   if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
           const newLocation: Location = {
@@ -12,6 +12,9 @@ const getLocation = (locationResolved: (location: Location) => void,
       }, (error)=>{
         locationNotResolved(error);
       });
+  } else {
+    locationNotResolved(
+      new Error());
   }
 }
 
