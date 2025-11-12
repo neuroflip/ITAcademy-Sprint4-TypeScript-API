@@ -34,7 +34,9 @@ class ApiManager<T extends FetchDataProviderInterface & { getData(): Promise<Res
     }
 
     async getCurrentWeather():  Promise<ResponseData> {
-        if (this.providers.weatherProviders.length === 0) throw new Error('No weather providers added to the ApiManager');
+        if (this.providers.weatherProviders.length === 0) {
+            throw new Error('No weather providers added to the ApiManager');
+        }
         const providerIndex = getRandomInt(0, this.providers.weatherProviders.length - 1);
 
         return await this.providers.weatherProviders[providerIndex].getData();

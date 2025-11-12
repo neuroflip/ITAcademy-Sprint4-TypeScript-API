@@ -1,6 +1,6 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import JokesTracker from '../JokesTracker';
-import { prepareJokeRatingInteraction } from '../JokesTrackerUI';
+import { prepareJokeRatingInteraction, clearButtonsClasses } from '../JokesTrackerUI';
 
 vi.mock('../JokesTrackerUI', () => ({
   prepareJokeRatingInteraction: vi.fn(),
@@ -69,6 +69,7 @@ describe('JokesTracker', () => {
             "score": 0,
             "date": "date iso string"
           }]);
+          expect(clearButtonsClasses).toHaveBeenCalled();
       });
 
       it('adds a report joke when calling setCurrentJoke and there is not voted previous data', () => {
@@ -91,6 +92,7 @@ describe('JokesTracker', () => {
             ...secondData,
             "date": 'date iso string'
           }]);
+          expect(clearButtonsClasses).toHaveBeenCalled();
       });
 
       it('adds a report joke when calling setCurrentJoke and there is voted previous data', () => {
@@ -121,6 +123,7 @@ describe('JokesTracker', () => {
             ...secondData,
             "date": 'date iso string'
           }]);
+          expect(clearButtonsClasses).toHaveBeenCalled();
       });
     });
 });

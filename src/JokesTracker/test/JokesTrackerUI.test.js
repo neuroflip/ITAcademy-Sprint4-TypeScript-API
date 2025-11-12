@@ -52,4 +52,19 @@ describe('JokesTrackerUI', () => {
       expect(callback).toHaveBeenCalledWith(NORMAL);
       expect(callback).toHaveBeenCalledWith(NOTFUNNY);
     });
+
+    it('selects the button clicked and deselects the other ones', () => {
+      const button1 = globalThis.document.getElementById('plus1button');
+      const button2 = globalThis.document.getElementById('plus2button');
+      const button3 = globalThis.document.getElementById('plus3button');
+
+      button2.classList.add('selected');
+      prepareJokeRatingInteraction(callback);
+
+      button1.click();
+
+      expect(button1.className).toEqual('jokesTrackerContainer__button--plus selected');
+      expect(button2.className).toEqual('jokesTrackerContainer__button--plus');
+      expect(button3.className).toEqual('jokesTrackerContainer__button--plus');
+    });
 });

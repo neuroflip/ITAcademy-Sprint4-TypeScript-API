@@ -1,5 +1,10 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from '../JokesManagerUI'
+import { prepareNextJokeButtonInteraction, setJokesText, setRandomBackground, toggleSpinner } from '../JokesManagerUI'
+import { getRandomInt } from '../../helpers/utils';
+
+vi.mock('../../helpers/utils', () => ({
+  getRandomInt: vi.fn().mockReturnValueOnce(0).mockReturnValue(1)
+}));
 
 const callback = vi.fn();
 
@@ -74,5 +79,17 @@ describe('', () => {
 
     setJokesText('This is a new joke');
     expect(jokeContainer.textContent).toEqual('"This is a new joke"');
+  });
+
+  it('sets a random background (1)', () => {
+    setRandomBackground();
+
+    expect(document.body.className).toEqual('blob1');
+  });
+  
+  it('sets a random background (2)', () => {
+    setRandomBackground();
+
+    expect(document.body.className).toEqual('blob2');
   });
 });

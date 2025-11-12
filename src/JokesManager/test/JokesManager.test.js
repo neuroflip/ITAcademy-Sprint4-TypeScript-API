@@ -39,11 +39,12 @@ vi.mock('../../JokesTracker/JokesTracker', () => {
   };
 });
 
-import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner } from '../JokesManagerUI';
+import { prepareNextJokeButtonInteraction, setJokesText, toggleSpinner, setRandomBackground } from '../JokesManagerUI';
 vi.mock('../JokesManagerUI', () => ({
   prepareNextJokeButtonInteraction: vi.fn(),
   setJokesText: vi.fn(),
-  toggleSpinner: vi.fn()
+  toggleSpinner: vi.fn(),
+  setRandomBackground: vi.fn()
 }));
 
 import { setError } from '../../ErrorContainer/ErrorContainer';
@@ -56,7 +57,7 @@ describe('JokesManager', () => {
         vi.clearAllMocks();
     });
 
-    it('calls addJokesProviders with the correct providers', () => {
+    it('calls apiManager addJokesProviders with the correct providers on creation', () => {
         new JokesManager();
 
         expect(ApiManagerMock.addJokesProviders).toHaveBeenCalledTimes(1);
@@ -69,7 +70,7 @@ describe('JokesManager', () => {
         expect(prepareNextJokeButtonInteraction).toHaveBeenCalledWith(expect.any(Function));
     });
 
-    it('calls to getRandomJoke from apiManager requesting for a new joke', async () => {
+    it('calls to getRandomJoke from apiManager requesting for a new joke (getNewJoke)', async () => {
         const jokesManager = new JokesManager();
 
         jokesManager.getNewJoke();
@@ -79,6 +80,7 @@ describe('JokesManager', () => {
         expect(toggleSpinner).toHaveBeenCalledTimes(2);
         expect(setJokesText).toHaveBeenCalledWith('');
         expect(setJokesText).toHaveBeenCalledWith('joke');
+        expect(setRandomBackground).toHaveBeenCalled();
         expect(jokesTrackerMock.setCurrentJoke).toHaveBeenCalledWith({ 
             joke: 'joke',
             score: 100,
@@ -96,6 +98,7 @@ describe('JokesManager', () => {
         expect(await ApiManagerMock.getRandomJoke).toHaveBeenCalled();
         expect(setJokesText).toHaveBeenCalledTimes(2);
         expect(setJokesText).toHaveBeenCalledWith('');
+        expect(setRandomBackground).not.toHaveBeenCalled();
         expect(setError).toHaveBeenCalledWith('An error has occurred, please try again');
     });
 });

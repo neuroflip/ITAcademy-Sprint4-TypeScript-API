@@ -10,7 +10,7 @@ interface ApiManagerInterface<T extends FetchDataProviderInterface & { getData()
     providers: Providers,
     addJokesProviders(providers: Array<T>),
     addWeatherProviders(providers: Array<T>),
-    getRandomJoke(): Promise<NormalizedData>,
+    getRandomJoke(): Promise<ResponseData>,
     getCurrentWeather():  Promise<ResponseData>
 }
 
