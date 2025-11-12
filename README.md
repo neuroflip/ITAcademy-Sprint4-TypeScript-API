@@ -84,6 +84,7 @@ The ApiManager gets the api providers needed using dependency injection at creat
  - there is an error management when accessing to the APIs. Each component will capture the possible errors to show a message to the user in ui
  - the code done in typescript using OO and inheritance. This way we can reuse easyly the fetch code and implement new data fetch providers to access new apis
  - all the modules includes his own tests
+ - the css selectors are using BEM nomenclature
 
 ## CI pipeline
 

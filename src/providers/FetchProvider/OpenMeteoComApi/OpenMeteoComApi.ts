@@ -33,7 +33,7 @@ class OpenMeteoComApi extends FetchDataProvider implements OpenMeteoComApiInterf
                 } catch(error) {
                       reject(new Error('OpenMeteoComAPI cannot be accessed.'));
                 }
-            }, (error: GeolocationPositionError) => {
+            }, (error: GeolocationPositionError | Error) => {
                 reject(error);
             });
         });
