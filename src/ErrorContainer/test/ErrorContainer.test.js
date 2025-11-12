@@ -21,7 +21,7 @@ describe('ErrorContainer', () => {
         const errorMessage = 'This is a new error';
         setError(errorMessage);
 
-        const errorContainer = document.querySelector('.errorContainer');
+        const errorContainer = globalThis.document.querySelector('.errorContainer');
         expect(errorContainer.textContent).toEqual(`‼️ ${errorMessage}\r\n`);
         expect(errorContainer.className).toEqual('errorContainer');
     });
@@ -32,14 +32,14 @@ describe('ErrorContainer', () => {
         setError(errorMessage1);
         setError(errorMessage2);
 
-        const errorContainer = document.querySelector('.errorContainer');
+        const errorContainer = globalThis.document.querySelector('.errorContainer');
         expect(errorContainer.textContent).toEqual(`‼️ ${errorMessage1}\r\n‼️ ${errorMessage2}\r\n`);
     });
 
     it('clears the previous error using clearError and hiddes the error container', () => {
         setError('This is an error');
         clearError();
-        const errorContainer = document.querySelector('.errorContainer');
+        const errorContainer = globalThis.document.querySelector('.errorContainer');
 
         expect(errorContainer.textContent).toEqual('');
         expect(errorContainer.className).toEqual('errorContainer hidden');

@@ -1,4 +1,3 @@
-import type { NormalizedData } from '../providers/FetchDataProvider.d';
 import type { FetchDataProviderInterface } from '../providers/FetchDataProvider.d';
 
 type Providers = {

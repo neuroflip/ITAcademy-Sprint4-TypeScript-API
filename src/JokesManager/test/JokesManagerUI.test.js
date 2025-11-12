@@ -84,12 +84,14 @@ describe('', () => {
   it('sets a random background (1)', () => {
     setRandomBackground();
 
-    expect(document.body.className).toEqual('blob1');
+    expect(globalThis.document.body.className).toEqual('blob1');
+    expect(getRandomInt).toHaveBeenCalled();
   });
   
   it('sets a random background (2)', () => {
     setRandomBackground();
 
-    expect(document.body.className).toEqual('blob2');
+    expect(globalThis.document.body.className).toEqual('blob2');
+    expect(getRandomInt).toHaveBeenCalled();
   });
 });
