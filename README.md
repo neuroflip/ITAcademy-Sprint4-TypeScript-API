@@ -35,16 +35,26 @@ $ npm run preview
 $ npm run test
 ```
 
+6. Run the linter analisis:
+```bash
+$ npm run lint
+```
+
 <br>
 
 ## Project structure
 
-The code architecture is organized in modules. A module directory incapsulates all the code and the resources (typescript implementation, styles and tests) inside the its directory. Then, it is structured as follows:
+The code architecture is organized in modules. A module directory incapsulates all the code and the resources (typescript implementation, styles and tests) inside the its directory. All the directories have a styles/ directory with the scss code related to the class, a test/ directory with the vitests code. All the types and interfaces are declared inside a *.d.ts file. At root directory src/ there is another styles/ and test/ directory including the 
+
+Then, it is structured as follows:
 
 | Directory | Content |
 | -------- | -------- |
 | /src/ | All the source code |
 | -- /assets/images/ | All the static assets. Only images by now |
+| -- /helpers/ | utilities common code
+| -- /test/ | tests for the main.ts file
+| -- /styles/ | scss common code
 | -- <b>/ApiManager/</b> | An ApiManager to manage all the api access |
 | ---- /test/ | Tests for the ApiManager module |
 | -- <b>/JokesManager/</b> | A JokesManager to manage together the jokes api access and the tracking data for the jokes scores |
@@ -94,5 +104,7 @@ The project is managing a CI process using test execution and eslint execution u
 
 ## Testing
 The tests are implemented using vitest and javascript (not using typescript by now). The tests are included inside the class directory they are testing. This way all the classes are self contained (code, styles, tests, type definition).
+
+There is another layer of checks using eslint. Check the package.json to run the linter.
 
 <br />
